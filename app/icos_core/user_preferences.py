@@ -152,6 +152,11 @@ class IcosUserPreferences:
             elif (preference_key not in overrides and 
                   modifiable_attributes[preference_key] == bool):
                 setattr(self, preference_key, False)
+        
+        # Handle legacy theme attribute mapping that may have changed
+        if 'theme' in overrides:
+            # Update interface_theme if theme was provided
+            self.interface_theme = overrides['theme']
     
     def __getitem__(self, preference_name: str) -> Any:
         """Allow dictionary-style access to preferences."""
@@ -389,6 +394,10 @@ class IcosUserPreferencesCompatible(IcosUserPreferences):
         super().__init__(**preference_overrides)
         # Add legacy attribute mappings for backward compatibility
         self._setup_legacy_attributes()
+        
+        # If theme was overridden, recalculate legacy attributes that depend on it
+        if 'theme' in preference_overrides:
+            self._setup_legacy_attributes()
     
     def _setup_legacy_attributes(self) -> None:
         """Map new ICOS attribute names to legacy names for compatibility."""
@@ -402,7 +411,8 @@ class IcosUserPreferencesCompatible(IcosUserPreferences):
         self.get_only = self.get_requests_only
         self.alts = self.alternative_frontends
         self.nojs = self.javascript_disabled
-        self.dark = self.dark_theme_legacy
+        # Calculate dark property based on current theme setting, not just legacy environment variable
+        self.dark = self._calculate_dark_mode_state()
         self.preferences_encrypted = self.encrypted_preferences
         self.preferences_key = self.encryption_key
         self.accept_language = self.accept_language_header
@@ -463,6 +473,27 @@ class IcosUserPreferencesCompatible(IcosUserPreferences):
     def get_attrs(self) -> Dict[str, Any]:
         """Legacy method name for exportable preferences."""
         return self.get_exportable_preferences()
+    
+    def _calculate_dark_mode_state(self) -> bool:
+        """
+        Calculate whether dark mode should be enabled based on current theme setting.
+        
+        Returns:
+            True if dark mode should be active, False otherwise
+        """
+        # Check current theme setting (interface_theme from form submission takes precedence)
+        current_theme = self.interface_theme
+        
+        if current_theme == 'dark':
+            return True
+        elif current_theme == 'light':
+            return False
+        elif current_theme == 'system':
+            # For system theme, fall back to legacy environment variable
+            return self.dark_theme_legacy
+        else:
+            # Default to legacy environment variable for unknown themes
+            return self.dark_theme_legacy
 
 
 # Maintain backward compatibility with existing codebase
