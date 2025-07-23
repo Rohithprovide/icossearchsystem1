@@ -1,0 +1,203 @@
+{% if mobile %}
+    <header>
+        <div class="header-div">
+            <form class="search-form header"
+                  id="search-form"
+                  method="{{ 'GET' if config.get_only else 'POST' }}">
+                <a class="logo-link mobile-logo" href="{{ home_url }}">
+                    <div id="mobile-header-logo" class="search-results-logo">
+                        {{ logo|safe }}
+                    </div>
+                </a>
+                <div class="H0PQec mobile-input-div">
+                    <div class="autocomplete-mobile esbc autocomplete">
+                        {% if config.preferences %}
+                            <input type="hidden" name="preferences" value="{{ config.preferences }}" />
+                        {% endif %}
+                        <input
+                                id="search-bar"
+                                class="mobile-search-bar"
+                                autocapitalize="none"
+                                autocomplete="off"
+                                autocorrect="off"
+                                spellcheck="false"
+                                class="search-bar-input"
+                                name="q"
+                                type="text"
+                                value="{{ clean_query(query) }}"
+                                dir="auto">
+                        <input id="search-reset" type="reset" value="x">
+                        <input name="tbm" value="{{ search_type }}" style="display: none">
+                        <input name="country" value="{{ config.country }}" style="display: none;">
+                        <input type="submit" style="display: none;">
+                        <div class="sc"></div>
+                    </div>
+                </div>
+            </form>
+        </div>
+      <div>
+        <div class="header-tab-div">
+            <div class="header-tab-div-2">
+                <div class="header-tab-div-3">
+                    <div class="mobile-header header-tab">
+                        {% for tab_id, tab_content in tabs.items() %}
+                            {% if tab_content['selected'] %}
+                                <span class="mobile-tab-span">{{ tab_content['name'] }}</span>
+                            {% else %}
+                                <a class="header-tab-a" href="{{ tab_content['href'] }}">{{ tab_content['name'] }}</a>
+                            {% endif %}
+                        {% endfor %}
+                      <input id="adv-search-toggle" type="checkbox">
+                        <div class="header-tab-div-end"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="" id="s">
+      </div>
+    </header>
+{% else %}
+    <header>
+        <div class="header-container">
+            <div class="logo-div">
+                <a class="logo-link" href="{{ home_url }}">
+                    <div class="desktop-header-logo search-results-logo">
+                        {{ logo|safe }}
+                    </div>
+                </a>
+            </div>
+            <div class="search-div">
+                <form id="search-form"
+                      class="search-form"
+                      id="sf"
+                      method="{{ 'GET' if config.get_only else 'POST' }}">
+                    <div class="autocomplete header-autocomplete">
+                        <div style="width: 100%; display: flex; position: relative;">
+                            {% if config.preferences %}
+                                <input type="hidden" name="preferences" value="{{ config.preferences }}" />
+                            {% endif %}
+                            <div class="search-input-container header-search-container">
+                                <i class="fa-solid fa-magnifying-glass search-icon-left" style="position: absolute !important; left: 18px !important; top: 50% !important; transform: translateY(-50%) !important; color: #9aa0a6 !important; font-size: 16px !important; z-index: 1001 !important; pointer-events: none !important; display: block !important;"></i>
+                                <input
+                                        id="search-bar"
+                                        autocapitalize="none"
+                                        autocomplete="off"
+                                        autocorrect="off"
+                                        class="search-bar-desktop search-bar-input"
+                                        name="q"
+                                        spellcheck="false"
+                                        type="text"
+                                        value="{{ clean_query(query) }}"
+                                        dir="auto">
+                                <i class="fa-solid fa-xmark header-search-clear" id="search-clear" onclick="clearSearch()"></i>
+                            </div>
+                            <input name="tbm" value="{{ search_type }}" style="display: none">
+                            <input name="country" value="{{ config.country }}" style="display: none;">
+                            <input name="tbs" value="{{ config.tbs }}" style="display: none;">
+                            <input type="submit" style="display: none;">
+                            <div class="sc"></div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </header>
+    <div>
+      <div class="header-tab-div">
+          <div class="header-tab-div-2">
+              <div class="header-tab-div-3">
+                  <div class="desktop-header header-tab">
+                      {% for tab_id, tab_content in tabs.items() %}
+                          {% if tab_content['selected'] %}
+                              <span class="header-tab-span">{{ tab_content['name'] }}</span>
+                          {% else %}
+                              <a class="header-tab-a" href="{{ tab_content['href'] }}">{{ tab_content['name'] }}</a>
+                          {% endif %}
+                      {% endfor %}
+                      <input id="adv-search-toggle" type="checkbox">
+                      <div class="header-tab-div-end"></div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="" id="s">
+  </div>
+{% endif %}
+<div class="result-collapsible" id="adv-search-div">
+    <div class="result-config">
+        <label for="config-country">{{ translation['config-country'] }}: </label>
+        <select name="country" id="result-country">
+            {% for country in countries %}
+                <option value="{{ country.value }}"
+                    {% if (
+                        config.country != '' and config.country in country.value
+                    ) or (
+                        config.country == '' and country.value == '')
+                    %}
+                    selected
+                    {% endif %}>
+                    {{ country.name }}
+                </option>
+            {% endfor %}
+        </select>
+        <br />
+        <label for="config-time-period">{{ translation['config-time-period'] }}: </label>
+        <select name="tbs" id="result-time-period">
+            {% for time_period in time_periods %}
+                <option value="{{ time_period.value }}"
+                        {% if (
+                            config.tbs != '' and config.tbs in time_period.value
+                        ) or (
+                            config.tbs == '' and time_period.value == '')
+                        %}
+                        selected
+                        {% endif %}>
+                {{ translation[time_period.value] }}
+                </option>
+            {% endfor %}
+        </select>
+    </div>
+</div>
+
+<script>
+function clearSearch() {
+    const searchBar = document.getElementById('search-bar');
+    const clearIcon = document.getElementById('search-clear');
+    
+    if (searchBar) {
+        searchBar.value = '';
+        searchBar.focus();
+        if (clearIcon) {
+            clearIcon.style.display = 'none';
+        }
+    }
+}
+
+// Show/hide clear icon based on input content
+document.addEventListener('DOMContentLoaded', function() {
+    const searchBar = document.getElementById('search-bar');
+    const clearIcon = document.getElementById('search-clear');
+    
+    if (searchBar && clearIcon) {
+        // Check initial state
+        if (searchBar.value.trim() === '') {
+            clearIcon.style.display = 'none';
+        } else {
+            clearIcon.style.display = 'block';
+        }
+        
+        // Listen for input changes
+        searchBar.addEventListener('input', function() {
+            if (this.value.trim() === '') {
+                clearIcon.style.display = 'none';
+            } else {
+                clearIcon.style.display = 'block';
+            }
+        });
+    }
+});
+
+
+</script>
+
+<script type="text/javascript" src="{{ cb_url('header.js') }}"></script>

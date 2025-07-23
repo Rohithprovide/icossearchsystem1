@@ -1,0 +1,624 @@
+<html>
+<head>
+    <link rel="icon" type="image/svg+xml" href="static/img/favicon/favicon.svg">
+    <link rel="icon" type="image/x-icon" href="static/img/favicon/favicon.ico">
+    <link rel="manifest" href="static/img/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="static/img/favicon/ms-icon-144x144.png">
+    {% if not search_type %}
+        <link rel="search" href="opensearch.xml" type="application/opensearchdescription+xml" title="Whoogle Search">
+    {% else %}
+        <link rel="search" href="opensearch.xml?tbm={{ search_type }}" type="application/opensearchdescription+xml" title="Whoogle Search ({{ search_name }})">
+    {% endif %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer">
+    <meta name="google-api-key" content="{{ google_api_key }}">
+    <link rel="stylesheet" href="{{ cb_url('logo.css') }}">
+    <link rel="stylesheet" href="{{ cb_url('input.css') }}">
+    <link rel="stylesheet" href="{{ cb_url('search.css') }}">
+    <link rel="stylesheet" href="{{ cb_url('header.css') }}">
+    <link rel="stylesheet" href="{{ cb_url('autocomplete-fix.css') }}">
+    <link rel="stylesheet" href="{{ cb_url('voice-search.css') }}">
+    <link rel="stylesheet" href="static/css/hide-google-icons.css">
+    <link rel="stylesheet" href="{{ cb_url('pagination.css') }}">
+
+<link rel="stylesheet" href="{{ cb_url('video-results.css') }}">
+
+<!-- <link rel="stylesheet" href="{{ cb_url('images-fullscreen.css') }}"> -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous">
+    <style>
+        /* Force search bar width override with highest specificity */
+        .header-container .search-div .header-autocomplete .search-bar-desktop,
+        .search-bar-desktop,
+        #search-bar.search-bar-desktop {
+            max-width: 900px !important;
+            min-width: 650px !important;
+            width: 100% !important;
+        }
+        
+        /* Fix homepage search input padding to prevent text overlap with icons */
+        #search-bar.home-search,
+        .home-search,
+        input.home-search,
+        #search-bar {
+            padding-right: 90px !important;
+        }
+        
+        /* Fix search results page input padding to prevent text going under clear icon */
+        .search-bar-desktop,
+        #search-bar.search-bar-desktop,
+        input.search-bar-desktop {
+            padding-right: 80px !important;
+        }
+        
+        /* Position clear icon properly on search results page */
+        .header-container .search-clear-icon {
+            right: 45px !important;
+        }
+        
+        /* Full width layout for images tab - detect via URL parameters */
+        body {
+            --is-images-tab: 0;
+        }
+        
+        /* Apply full width when tbm=isch is in URL (images tab) */
+        body.images-tab,
+        body[data-images-fullscreen="true"] {
+            --is-images-tab: 1;
+        }
+        
+        /* Force full width layout for images */
+        body.images-tab,
+        body[data-images-fullscreen="true"] {
+            max-width: 100% !important;
+            padding: 0 !important;
+        }
+        
+        body.images-tab .header-tab-div,
+        body[data-images-fullscreen="true"] .header-tab-div {
+            max-width: 100% !important;
+            margin: 0 !important;
+            padding: 0 20px !important;
+        }
+        
+        body.images-tab #main,
+        body[data-images-fullscreen="true"] #main {
+            max-width: 100% !important;
+            width: 100% !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+        
+        /* Override any existing constraints */
+        body.images-tab:has(.search-results-logo) #main,
+        body.images-tab:has(header) #main,
+        body[data-images-fullscreen="true"]:has(.search-results-logo) #main,
+        body[data-images-fullscreen="true"]:has(header) #main {
+            margin: 0 !important;
+            max-width: 100% !important;
+            width: 100% !important;
+        }
+        
+        /* Ensure container matches */
+        .header-container .search-div {
+            max-width: 900px !important;
+            min-width: 650px !important;
+            width: 100% !important;
+        }
+        
+        .search-div .header-autocomplete {
+            max-width: 900px !important;
+            min-width: 650px !important;
+            width: 100% !important;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .search-bar-desktop,
+            .header-container .search-div,
+            .search-div .header-autocomplete {
+                min-width: 300px !important;
+                max-width: 90vw !important;
+            }
+        }
+        
+        /* Reduce spacing between header and tabs */
+        .header-tab-div {
+            margin-top: -5px !important;
+        }
+        
+        header + div .header-tab-div {
+            margin-top: -8px !important;
+        }
+        
+        /* Compact header spacing */
+        .header-container {
+            padding-bottom: 2px !important;
+        }
+        
+        /* Move navigation tabs to align with space between logo and search bar and expand width */
+        .header-tab-div-2 {
+            padding-left: 15px !important;
+            padding-right: 10px !important;
+            width: calc(100% - 25px) !important;
+            max-width: none !important;
+        }
+        
+        /* Move only search results content to the right, not header */
+        body {
+            position: relative;
+        }
+        
+        /* Keep header in original position */
+        header,
+        .header-container,
+        .header-tab-div,
+        .header-tab-div-2,
+        .header-tab-div-3 {
+            position: relative;
+            margin-left: 0 !important;
+            width: 100% !important;
+        }
+        
+        /* Target search results content specifically - maximize available space */
+        body > div:not([class*="header"]):not([id*="header"]):not(.right-sidebar) {
+            margin-left: 120px !important;
+            margin-right: 10px !important;
+            max-width: none !important;
+            width: auto !important;
+        }
+        
+        /* Also target any direct content elements */
+        body > main,
+        body > section,
+        body > article {
+            margin-left: 120px !important;
+            margin-right: 10px !important;
+            max-width: none !important;
+            width: auto !important;
+        }
+        
+        /* Make search result items wider and expand to full available width */
+        .result,
+        .search-result,
+        div[class*="result"],
+        div[data-result] {
+            max-width: none !important;
+            width: 100% !important;
+            padding-right: 0 !important;
+        }
+        
+        /* Ensure main content containers use full available width */
+        #main {
+            margin-left: 120px !important;
+            margin-right: 10px !important;
+            max-width: none !important;
+            width: auto !important;
+        }
+        
+        /* Target the specific search results container seen in inspector */
+        #d2md,
+        div[id="d2md"],
+        div[id*="d2md"], 
+        div[id*="main"],
+        div[data-ved] {
+            max-width: none !important;
+            width: 100% !important;
+            margin-left: 0 !important;
+            padding-left: 0 !important;
+        }
+        
+        /* Expand all search result containers */
+        div[jscontroller],
+        div[jsname] {
+            max-width: none !important;
+            width: 100% !important;
+        }
+        
+        /* Force width on Google's result containers */
+        div[style*="width"] {
+            width: 100% !important;
+            max-width: none !important;
+        }
+        
+        /* Move search results content specifically */
+        #main,
+        .content,
+        .results,
+        div[id*="main"],
+        div[class*="main"],
+        div[class*="content"],
+        div[class*="result"] {
+            margin-left: 0 !important;
+            padding-left: 0 !important;
+        }
+        
+        /* Responsive adjustments for search results positioning */
+        @media (max-width: 1024px) {
+            body > div:not([class*="header"]):not([id*="header"]),
+            body > main,
+            body > section,
+            body > article,
+            #main {
+                margin-left: 80px !important;
+                margin-right: 8px !important;
+                max-width: none !important;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            body > div:not([class*="header"]):not([id*="header"]),
+            body > main,
+            body > section,
+            body > article,
+            #main {
+                margin-left: 20px !important;
+                margin-right: 5px !important;
+                max-width: none !important;
+            }
+        }
+        
+        /* Responsive adjustments for navigation tabs */
+        @media (max-width: 1024px) {
+            .header-tab-div-2 {
+                padding-left: 12px !important;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-tab-div-2 {
+                padding-left: 10px !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .header-tab-div-2 {
+                padding-left: 8px !important;
+            }
+        }
+        
+        /* Remove overflow scrollbar and set fixed tab spacing with expanded width */
+        .header-tab-div-3 {
+            overflow-x: hidden !important;
+            overflow-y: hidden !important;
+            width: 100% !important;
+            max-width: none !important;
+        }
+        
+        /* Expand the main header tab div container */
+        .header-tab-div {
+            width: 100% !important;
+            max-width: none !important;
+        }
+        
+        /* Reduce spacing between navigation tabs to fit all tabs */
+        .desktop-header a, .desktop-header span {
+            margin: 0 15px !important;
+            padding: 12px 16px !important;
+        }
+        
+        /* Ensure tabs container fits content and expand width */
+        .desktop-header {
+            justify-content: flex-start !important;
+            flex-wrap: nowrap !important;
+            width: calc(100% - 25px) !important;
+            max-width: none !important;
+            padding-right: 10px !important;
+        }
+        
+        /* Responsive tab spacing */
+        @media (max-width: 768px) {
+            .desktop-header a, .desktop-header span {
+                margin: 0 8px !important;
+                padding: 12px 16px !important;
+            }
+        }
+        
+        /* Right sidebar styles - only for All tab */
+        .right-sidebar {
+            width: 600px !important;
+            background: #ffffff !important;
+            border: 1px solid #dadce0 !important;
+            border-radius: 8px;
+            padding: 20px;
+            height: 600px;
+            position: absolute !important;
+            top: 160px !important;
+            right: 20px !important;
+            left: 860px !important;
+            z-index: 1000;
+            overflow-y: auto;
+            margin-left: 0 !important;
+        }
+        
+        .sidebar-content {
+            background: #ffffff !important;
+            color: #202124 !important;
+        }
+        
+        /* Force white background for sidebar in all themes */
+        .right-sidebar, .right-sidebar *, .sidebar-content, .sidebar-content * {
+            background: #ffffff !important;
+            background-color: #ffffff !important;
+            border-color: #dadce0 !important;
+        }
+        
+        /* Responsive design - hide sidebar on smaller screens */
+        @media (max-width: 1200px) {
+            .right-sidebar {
+                display: none;
+            }
+        }
+
+        /* Default logo color - black for light theme */
+        .search-results-logo .logo-text,
+        .desktop-header-logo .logo-text,
+        #mobile-header-logo .logo-text,
+        .logo-text {
+            color: #000000 !important;
+        }
+        
+        /* Dark theme detection - override to white */
+        body:has(link[href*="dark-theme.css"]) .search-results-logo .logo-text,
+        body:has(link[href*="dark-theme.css"]) .desktop-header-logo .logo-text,
+        body:has(link[href*="dark-theme.css"]) #mobile-header-logo .logo-text,
+        body:has(link[href*="dark-theme.css"]) .logo-text {
+            color: #ffffff !important;
+        }
+        
+        /* System dark theme preference */
+        @media (prefers-color-scheme: dark) {
+            .search-results-logo .logo-text,
+            .desktop-header-logo .logo-text,
+            #mobile-header-logo .logo-text,
+            .logo-text {
+                color: #ffffff !important;
+            }
+        }
+
+        /* Enhanced tooltip for microphone - positioned below with better styling */
+        .mic-tooltip {
+            position: absolute;
+            top: 45px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #ffffff;
+            color: #333333;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: 400;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+            z-index: 1000;
+            pointer-events: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .mic-tooltip::before {
+            content: '';
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-bottom: 6px solid #ffffff;
+        }
+
+        .search-icon-right:hover .mic-tooltip {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(2px);
+        }
+
+        /* Dark theme tooltip styling - highest priority with multiple selectors */
+        html:has(link[href*="dark-theme.css"]) .mic-tooltip,
+        body:has(link[href*="dark-theme.css"]) .mic-tooltip,
+        .mic-tooltip[data-theme="dark"],
+        [data-theme="dark"] .mic-tooltip {
+            background-color: #303134 !important;
+            color: #ffffff !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
+        }
+
+        html:has(link[href*="dark-theme.css"]) .mic-tooltip::before,
+        body:has(link[href*="dark-theme.css"]) .mic-tooltip::before,
+        .mic-tooltip[data-theme="dark"]::before,
+        [data-theme="dark"] .mic-tooltip::before {
+            border-bottom-color: #303134 !important;
+        }
+
+        /* Light theme tooltip styling */
+        body:not(:has(link[href*="dark-theme.css"])) .mic-tooltip,
+        body:has(link[href*="light-theme.css"]) .mic-tooltip {
+            background-color: #ffffff !important;
+            color: #333333 !important;
+            border: 1px solid rgba(0, 0, 0, 0.1) !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+        }
+
+        body:not(:has(link[href*="dark-theme.css"])) .mic-tooltip::before,
+        body:has(link[href*="light-theme.css"]) .mic-tooltip::before {
+            border-bottom-color: #ffffff !important;
+        }
+
+        @media (prefers-color-scheme: light) {
+            .mic-tooltip {
+                background-color: #ffffff;
+                color: #333333;
+                border: 1px solid rgba(0, 0, 0, 0.1);
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            }
+            
+            .mic-tooltip::before {
+                border-bottom-color: #ffffff;
+            }
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .mic-tooltip {
+                background-color: #303134;
+                color: #ffffff;
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+            }
+            
+            .mic-tooltip::before {
+                border-bottom-color: #303134;
+            }
+        }
+
+        /* Subtle background hover for microphone */
+        .search-icon-right:hover,
+        .search-input-container .search-icon-right:hover {
+            background-color: rgba(95, 99, 104, 0.08) !important;
+            border-radius: 50% !important;
+            transition: background-color 0.15s ease !important;
+        }
+
+        body:has(link[href*="dark-theme.css"]) .search-icon-right:hover,
+        body:has(link[href*="dark-theme.css"]) .search-input-container .search-icon-right:hover {
+            background-color: rgba(232, 234, 237, 0.08) !important;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .search-icon-right:hover,
+            .search-input-container .search-icon-right:hover {
+                background-color: rgba(232, 234, 237, 0.08) !important;
+            }
+        }
+
+        /* Header background fix for dark theme */
+        body:has(link[href*="dark-theme.css"]) header,
+        body:has(link[href*="dark-theme.css"]) .header-container,
+        body:has(link[href*="dark-theme.css"]) .header-div,
+        body:has(link[href*="dark-theme.css"]) .desktop-header,
+        body:has(link[href*="dark-theme.css"]) .mobile-header {
+            background-color: #202124 !important;
+            background: #202124 !important;
+        }
+        
+        /* System dark theme header preference */
+        @media (prefers-color-scheme: dark) {
+            header,
+            .header-container,
+            .header-div,
+            .desktop-header,
+            .mobile-header {
+                background-color: #202124 !important;
+                background: #202124 !important;
+            }
+            
+            /* Search bar color on results page */
+            .search-bar-desktop,
+            input.search-bar-desktop,
+            #search-bar.search-bar-desktop {
+                background-color: #363638 !important;
+                background: #363638 !important;
+            }
+        }
+        
+        /* Dark theme search bar for manual theme selection */
+        body:has(link[href*="dark-theme.css"]) .search-bar-desktop,
+        body:has(link[href*="dark-theme.css"]) input.search-bar-desktop,
+        body:has(link[href*="dark-theme.css"]) #search-bar.search-bar-desktop {
+            background-color: #363638 !important;
+            background: #363638 !important;
+        }
+
+    </style>
+    <script>
+        // Logo theme detection and color adjustment
+        function adjustLogoColor() {
+            const logoElements = document.querySelectorAll('.logo-text');
+            const isDarkTheme = document.querySelector('link[href*="dark-theme"]') !== null;
+            const isLightTheme = document.querySelector('link[href*="light-theme"]') !== null;
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            
+            logoElements.forEach(logo => {
+                // Default to black (light theme)
+                let color = '#000000';
+                
+                // Override to white if dark theme is detected
+                if (isDarkTheme || (isLightTheme === false && systemPrefersDark)) {
+                    color = '#ffffff';
+                }
+                
+                logo.style.color = color;
+                logo.style.setProperty('color', color, 'important');
+            });
+        }
+        
+        // Run on page load
+        document.addEventListener('DOMContentLoaded', adjustLogoColor);
+        
+        // Re-run when theme changes
+        if (window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(adjustLogoColor);
+        }
+    </script>
+    {% if config.theme %}
+        {% if config.theme == 'system' %}
+            <style>
+                @import "{{ cb_url('light-theme.css') }}" screen;
+                @import "{{ cb_url('dark-theme.css') }}" screen and (prefers-color-scheme: dark);
+            </style>
+        {% else %}
+            <link rel="stylesheet" href="{{ cb_url(config.theme + '-theme.css') }}"/>
+        {% endif %}
+    {% else %}
+        <link rel="stylesheet" href="{{ cb_url(('dark' if config.dark else 'light') + '-theme.css') }}"/>
+    {% endif %}
+    {% if config.style and config.style|trim %}
+    <style>{{ config.style|safe }}</style>
+    {% endif %}
+    <title>{{ clean_query(query) }} - icos search</title>
+</head>
+<body>
+{{ search_header|safe }}
+{% if is_translation %}
+    <iframe
+            id="lingva-iframe"
+            src="{{ lingva_url }}/auto/{{ translate_to }}/{{ translate_str }}">
+    </iframe>
+{% endif %}
+
+<!-- Main search results content -->
+{{ response|safe }}
+
+<!-- Right sidebar - only shown for All tab searches and when AI sidebar is enabled -->
+{% if (not search_type or search_type == '') and config.ai_sidebar %}
+<div class="right-sidebar" id="right-sidebar">
+    <div class="sidebar-content">
+        <!-- Content will be populated by JavaScript when AI response is needed -->
+    </div>
+</div>
+{% endif %}
+
+</body>
+{% include 'footer.html' %}
+{% if autocomplete_enabled == '1' %}
+    <script src="{{ cb_url('autocomplete.js') }}"></script>
+{% endif %}
+<script src="{{ cb_url('utils.js') }}"></script>
+<script src="{{ cb_url('keyboard.js') }}"></script>
+<script src="{{ cb_url('currency.js') }}"></script>
+<script src="{{ cb_url('search-clear.js') }}"></script>
+<script src="{{ cb_url('pagination.js') }}"></script>
+
+
+<script defer src="static/js/favicons.js"></script>
+<script defer src="static/js/images-fullscreen.js"></script>
+
+<script defer src="static/js/query-logger.js"></script>
+
+
+<!-- Removed inline script to improve page loading performance -->
+</html>

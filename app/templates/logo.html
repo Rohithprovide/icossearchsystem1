@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Icos Logo</title>
+  <!-- Import Dancing Script from Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Default logo styling for search results header - light theme */
+    .logo-text {
+      font-family: 'Dancing Script', cursive;
+      font-size: 28px;
+      font-weight: 700;
+      color: black;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      line-height: 1;
+    }
+
+    /* Homepage logo styling - larger size */
+    .homepage-logo .logo-text {
+      font-size: 180px;
+    }
+
+    /* Search results logo styling - smaller size for light theme */
+    .search-results-logo .logo-text {
+      font-size: 80px;
+      color: black !important;
+      margin-bottom: 20px;
+    }
+    
+    /* Dark theme override for logo text - more comprehensive selectors */
+    body.dark-theme .logo-text,
+    body.dark-theme .search-results-logo .logo-text,
+    body[data-theme="dark"] .logo-text,
+    body[data-theme="dark"] .search-results-logo .logo-text,
+    .search-results-logo .logo-text,
+    .desktop-header-logo .logo-text,
+    #mobile-header-logo .logo-text {
+      color: white !important;
+    }
+    
+    /* Override for any parent with dark theme class */
+    .search-results-logo .logo-text,
+    .desktop-header-logo .logo-text,
+    #mobile-header-logo .logo-text {
+      color: white !important;
+    }
+  </style>
+</head>
+<body>
+  <div class="logo-text">icos</div>
+</body>
+</html>
