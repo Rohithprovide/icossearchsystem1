@@ -1,0 +1,324 @@
+<html style="background: #000;">
+<head>
+    <link rel="icon" type="image/svg+xml" href="static/img/favicon/favicon.svg">
+    <link rel="icon" type="image/x-icon" href="static/img/favicon/favicon.ico">
+    <link rel="manifest" href="static/img/favicon/manifest.json">
+    <meta name="referrer" content="no-referrer">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="static/img/favicon/ms-icon-144x144.png">
+    {% if autocomplete_enabled == '1' %}
+        <script src="{{ cb_url('autocomplete.js') }}"></script>
+    {% endif %}
+    <script type="text/javascript" src="{{ cb_url('controller.js') }}"></script>
+    <script type="text/javascript" src="{{ cb_url('settings-modal.js') }}"></script>
+    <script type="text/javascript" src="{{ cb_url('search-clear.js') }}"></script>
+    <script type="text/javascript" src="{{ cb_url('voice-search.js') }}"></script>
+    <link rel="search" href="opensearch.xml" type="application/opensearchdescription+xml" title="Whoogle Search">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ cb_url('logo.css') }}">
+    {% if config.theme %}
+        {% if config.theme == 'system' %}
+            <style>
+                @import "{{ cb_url('light-theme.css') }}" screen;
+                @import "{{ cb_url('dark-theme.css') }}" screen and (prefers-color-scheme: dark);
+            </style>
+        {% else %}
+            <link rel="stylesheet" href="{{ cb_url(config.theme + '-theme.css') }}"/>
+        {% endif %}
+    {% else %}
+        <link rel="stylesheet" href="{{ cb_url(('dark' if config.dark else 'light') + '-theme.css') }}"/>
+    {% endif %}
+    <link rel="stylesheet" href="{{ cb_url('main.css') }}">
+    <link rel="stylesheet" href="{{ cb_url('voice-search.css') }}">
+    <noscript>
+        <style>
+            #main {
+                display: inherit !important;
+            }
+
+            .content {
+                max-height: 400px;
+                padding: 18px;
+                border-radius: 10px;
+                overflow-y: scroll;
+            }
+
+            .collapsible {
+                display: none;
+            }
+        </style>
+    </noscript>
+    <style>{{ config.style }}</style>
+    <style>
+        /* Fix homepage search input padding to prevent text overlap with microphone icon */
+        #search-bar.home-search,
+        .home-search,
+        input.home-search,
+        #search-bar {
+            padding-right: 80px !important;
+        }
+        
+        /* Position clear icon with proper spacing from divider line */
+        .search-clear-icon {
+            right: 60px !important;
+        }
+        
+        .search-icon-right {
+            right: 15px !important;
+        }
+        
+        /* Enhanced tooltip for microphone - positioned below with better styling */
+        .mic-tooltip {
+            position: absolute;
+            top: 45px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #ffffff;
+            color: #333333;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: 400;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+            z-index: 1000;
+            pointer-events: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .mic-tooltip::before {
+            content: '';
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-bottom: 6px solid #ffffff;
+        }
+
+        .search-icon-right:hover .mic-tooltip {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(2px);
+        }
+
+        /* Dark theme tooltip styling - highest priority with multiple selectors */
+        html:has(link[href*="dark-theme.css"]) .mic-tooltip,
+        body:has(link[href*="dark-theme.css"]) .mic-tooltip,
+        .mic-tooltip[data-theme="dark"],
+        [data-theme="dark"] .mic-tooltip {
+            background-color: #303134 !important;
+            color: #ffffff !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
+        }
+
+        html:has(link[href*="dark-theme.css"]) .mic-tooltip::before,
+        body:has(link[href*="dark-theme.css"]) .mic-tooltip::before,
+        .mic-tooltip[data-theme="dark"]::before,
+        [data-theme="dark"] .mic-tooltip::before {
+            border-bottom-color: #303134 !important;
+        }
+
+        /* Light theme tooltip styling */
+        body:not(:has(link[href*="dark-theme.css"])) .mic-tooltip,
+        body:has(link[href*="light-theme.css"]) .mic-tooltip {
+            background-color: #ffffff !important;
+            color: #333333 !important;
+            border: 1px solid rgba(0, 0, 0, 0.1) !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+        }
+
+        body:not(:has(link[href*="dark-theme.css"])) .mic-tooltip::before,
+        body:has(link[href*="light-theme.css"]) .mic-tooltip::before {
+            border-bottom-color: #ffffff !important;
+        }
+
+        @media (prefers-color-scheme: light) {
+            .mic-tooltip {
+                background-color: #ffffff;
+                color: #333333;
+                border: 1px solid rgba(0, 0, 0, 0.1);
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            }
+            
+            .mic-tooltip::before {
+                border-bottom-color: #ffffff;
+            }
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .mic-tooltip {
+                background-color: #303134;
+                color: #ffffff;
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+            }
+            
+            .mic-tooltip::before {
+                border-bottom-color: #303134;
+            }
+        }
+
+        /* Subtle background hover for microphone */
+        .search-icon-right:hover {
+            background-color: rgba(95, 99, 104, 0.08) !important;
+            border-radius: 50% !important;
+            transition: background-color 0.15s ease !important;
+        }
+
+        body:has(link[href*="dark-theme.css"]) .search-icon-right:hover {
+            background-color: rgba(232, 234, 237, 0.08) !important;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .search-icon-right:hover {
+                background-color: rgba(232, 234, 237, 0.08) !important;
+            }
+        }
+    </style>
+    <title>icos search</title>
+</head>
+<body id="main">
+<!-- Settings Menu Icon - Positioned outside search container -->
+<div class="settings-menu-icon" id="settings-icon">
+    <i class="fa-solid fa-bars"></i>
+</div>
+
+{% if not config_disabled %}
+    <!-- Settings Popup Modal - Positioned at body level -->
+    <div id="settings-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Settings</h2>
+                <span class="close-modal" id="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="config-form" action="config" method="post">
+                    {% if config.preferences %}
+                        <input type="hidden" name="preferences" value="{{ config.preferences }}" />
+                    {% endif %}
+                    
+                    <div class="setting-item">
+                        <div class="setting-icon">
+                            <i class="fa-solid fa-palette"></i>
+                        </div>
+                        <div class="setting-info">
+                            <div class="setting-title">Theme</div>
+                            <div class="setting-description">Choose your preferred theme</div>
+                        </div>
+                        <div class="setting-control">
+                            <select name="theme" id="modal-config-theme" class="theme-select">
+                                {% for theme in themes %}
+                                    <option value="{{ theme }}"
+                                            {% if theme in config.theme %}
+                                            selected
+                                            {% endif %}>
+                                        {{ translation[theme].capitalize() }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="setting-icon">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <div class="setting-info">
+                            <div class="setting-title">Safe Search</div>
+                            <div class="setting-description">Filter explicit content from search results</div>
+                        </div>
+                        <div class="setting-control">
+                            <label class="toggle-switch">
+                                <input type="checkbox" name="safe" id="modal-config-safe" {{ 'checked' if config.safe else '' }}>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="setting-icon">
+                            <i class="fa-solid fa-external-link-alt"></i>
+                        </div>
+                        <div class="setting-info">
+                            <div class="setting-title">Open Links in New Tab</div>
+                            <div class="setting-description">Open search results in new browser tabs</div>
+                        </div>
+                        <div class="setting-control">
+                            <label class="toggle-switch">
+                                <input type="checkbox" name="new_tab" id="modal-config-new-tab" {{ 'checked' if config.new_tab else '' }}>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="setting-icon">
+                            <i class="fa-solid fa-robot"></i>
+                        </div>
+                        <div class="setting-info">
+                            <div class="setting-title">AI Sidebar</div>
+                            <div class="setting-description">Enable AI-powered search insights and responses</div>
+                        </div>
+                        <div class="setting-control">
+                            <label class="toggle-switch">
+                                <input type="checkbox" name="ai_sidebar" id="modal-config-ai-sidebar" {{ 'checked' if config.ai_sidebar else '' }}>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-buttons">
+                        <input type="submit" id="modal-config-submit" value="Apply Settings" class="apply-btn">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+<div class="search-container">
+    <div class="logo-container homepage-logo">
+        {{ logo|safe }}
+    </div>
+    <form id="search-form" action="search" method="{{ 'get' if config.get_only else 'post' }}">
+        <div class="search-fields">
+            <div class="autocomplete">
+                {% if config.preferences %}
+                    <input type="hidden" name="preferences" value="{{ config.preferences }}" />
+                {% endif %}
+                <div class="search-input-container">
+                    <i class="fa-solid fa-magnifying-glass search-icon-left"></i>
+                    <input
+                            type="text"
+                            name="q"
+                            id="search-bar"
+                            class="home-search"
+                            autofocus="autofocus"
+                            autocapitalize="none"
+                            spellcheck="false"
+                            autocorrect="off"
+                            autocomplete="off"
+                            dir="auto">
+                    <i class="fa-solid fa-xmark search-clear-icon" id="home-search-clear" style="display: none;"></i>
+                    <div class="search-divider" id="search-divider" style="display: none;"></div>
+                    <i class="fa-solid fa-microphone search-icon-right">
+                        <div class="mic-tooltip">Search using voice</div>
+                    </i>
+                </div>
+            </div>
+            <input type="submit" id="search-submit" value="{{ translation['search'] }}">
+        </div>
+    </form>
+
+</div>
+{% include "footer.html" %}
+</body>
+</html>
