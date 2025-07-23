@@ -1,0 +1,134 @@
+/* Comprehensive autocomplete positioning fix for search results page */
+
+/* Reset all margins and positioning for autocomplete containers */
+.header-autocomplete {
+    position: relative !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+}
+
+/* Ensure the search bar is properly styled */
+.header-autocomplete .search-bar-desktop,
+.header-container .search-div .header-autocomplete .search-bar-desktop,
+#search-bar.search-bar-desktop {
+    width: 100% !important;
+    max-width: 900px !important;
+    min-width: 650px !important;
+    border: 1px solid #dfe1e5 !important;
+    border-radius: 24px !important;
+    padding: 12px 16px !important;
+    font-size: 16px !important;
+    background: white !important;
+    position: relative !important;
+    z-index: 1001 !important;
+}
+
+/* When autocomplete is active, modify search bar styling */
+.header-autocomplete.has-autocomplete .search-bar-desktop,
+.header-autocomplete:has(#autocomplete-list:not(:empty)) .search-bar-desktop {
+    border-radius: 24px 24px 0 0 !important;
+    border-bottom: none !important;
+    box-shadow: 0 2px 5px 1px rgba(64,60,67,.16) !important;
+}
+
+/* Autocomplete dropdown positioning - seamlessly connected */
+.header-autocomplete #autocomplete-list {
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    z-index: 1000 !important;
+    border: 1px solid #dfe1e5 !important;
+    border-top: none !important;
+    border-radius: 0 0 24px 24px !important;
+    box-shadow: 0 4px 12px rgba(32,33,36,.28) !important;
+    background-color: #fff !important;
+    max-height: 400px !important;
+    overflow-y: auto !important;
+    box-sizing: border-box !important;
+}
+
+/* Hide when empty */
+.header-autocomplete #autocomplete-list:empty {
+    display: none !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Autocomplete items styling */
+.header-autocomplete #autocomplete-list div {
+    background-color: #fff !important;
+    border-bottom: none !important;
+    padding: 8px 14px !important;
+    font-size: 14px !important;
+    color: #202124 !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    transition: background-color 0.1s ease !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    margin: 0 !important;
+}
+
+.header-autocomplete #autocomplete-list div:hover {
+    background-color: #f8f9fa !important;
+}
+
+.header-autocomplete #autocomplete-list div.autocomplete-active {
+    background-color: #f8f9fa !important;
+}
+
+.header-autocomplete #autocomplete-list div:not(:last-child) {
+    border-bottom: 1px solid #f1f3f4 !important;
+}
+
+/* Override any conflicting styles */
+.header-container .search-div {
+    position: relative !important;
+    flex: 1 !important;
+    max-width: 700px !important;
+    min-width: 500px !important;
+    width: 100% !important;
+    margin: 0 20px !important;
+}
+
+/* Remove any transforms or offsets that might cause spacing */
+.header-autocomplete * {
+    transform: none !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+/* Responsive design for mobile */
+@media (max-width: 768px) {
+    .header-container .search-div {
+        min-width: 300px !important;
+        max-width: 90vw !important;
+        margin: 0 10px !important;
+    }
+    
+    .search-div .header-autocomplete {
+        min-width: 300px !important;
+        max-width: 90vw !important;
+    }
+}
+
+/* Medium screens */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .header-container .search-div {
+        min-width: 400px !important;
+        max-width: 600px !important;
+        margin: 0 15px !important;
+    }
+    
+    .search-div .header-autocomplete {
+        min-width: 400px !important;
+        max-width: 600px !important;
+    }
+}
