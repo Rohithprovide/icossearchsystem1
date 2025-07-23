@@ -1,0 +1,37 @@
+/* Hide only specific footer elements while preserving search results */
+
+/* Hide Google logo images */
+img[src*="googlelogo"],
+img[src*="google.com/images/branding"],
+img[alt*="Google"],
+img[title*="Google"] {
+    display: none !important;
+}
+
+/* Hide Google icons and SVGs */
+.google-icon,
+.gicon,
+svg[class*="google"]:not(.header *):not(.navigation *),
+svg[viewBox*="0 0 272 92"],
+svg[viewBox*="0 0 136 46"] {
+    display: none !important;
+}
+
+/* Hide elements with Google-related classes but not in navigation */
+[class*="google-logo"]:not(.header *):not(.navigation *),
+[class*="googlelogo"]:not(.header *):not(.navigation *),
+[id*="google-logo"]:not(.header *):not(.navigation *),
+[id*="googlelogo"]:not(.header *):not(.navigation *) {
+    display: none !important;
+}
+
+/* Hide Privacy and Terms links only if they're standalone (typical footer) */
+a[href*="privacy"]:not([href*="search"]):not([href*="results"]),
+a[href*="terms"]:not([href*="search"]):not([href*="results"]) {
+    display: none !important;
+}
+
+/* Hide small divs containing only footer text (under 200 chars and no URLs) */
+div:not(:has(a[href*="www."])):not(:has(a[href*="http"])):not(:has(a[href*=".com"])):not(:has(a[href*=".org"])) {
+    /* This will be handled by JavaScript for better control */
+}

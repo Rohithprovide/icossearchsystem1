@@ -1,0 +1,141 @@
+/* Google-style pagination styling */
+
+/* Target the pagination container */
+table.uZgmoc,
+.pagination,
+div[role="navigation"],
+nav[role="navigation"] {
+    margin: 30px 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 0 !important;
+}
+
+/* Style pagination links */
+table.uZgmoc td,
+table.uZgmoc a,
+.pagination a,
+div[role="navigation"] a,
+nav[role="navigation"] a {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 40px !important;
+    height: 40px !important;
+    padding: 8px 16px !important;
+    margin: 0 4px !important;
+    font-size: 14px !important;
+    color: #1a73e8 !important;
+    text-decoration: none !important;
+    border-radius: 50% !important;
+    background: transparent !important;
+    border: none !important;
+    transition: background-color 0.3s ease !important;
+    box-sizing: border-box !important;
+}
+
+/* Hover effect for pagination links */
+table.uZgmoc a:hover,
+.pagination a:hover,
+div[role="navigation"] a:hover,
+nav[role="navigation"] a:hover {
+    background-color: #f8f9fa !important;
+    color: #1a73e8 !important;
+}
+
+/* Current page styling */
+table.uZgmoc .current,
+table.uZgmoc span[aria-current="page"],
+.pagination .current,
+.pagination span[aria-current="page"],
+div[role="navigation"] .current,
+div[role="navigation"] span[aria-current="page"],
+nav[role="navigation"] .current,
+nav[role="navigation"] span[aria-current="page"] {
+    color: #1a73e8 !important;
+    font-weight: 500 !important;
+    background: transparent !important;
+    border-bottom: 3px solid #4285f4 !important;
+    border-radius: 0 !important;
+    padding-bottom: 5px !important;
+    min-width: 40px !important;
+    height: 40px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 4px !important;
+}
+
+/* Next/Previous arrows */
+table.uZgmoc a[aria-label*="Next"],
+table.uZgmoc a[aria-label*="Previous"],
+.pagination a[aria-label*="Next"],
+.pagination a[aria-label*="Previous"],
+div[role="navigation"] a[aria-label*="Next"],
+div[role="navigation"] a[aria-label*="Previous"],
+nav[role="navigation"] a[aria-label*="Next"],
+nav[role="navigation"] a[aria-label*="Previous"] {
+    border-radius: 4px !important;
+    padding: 8px 12px !important;
+    color: #5f6368 !important;
+}
+
+/* Style any pagination links generically */
+table.uZgmoc a,
+.pagination a,
+div[role="navigation"] a,
+nav[role="navigation"] a {
+    border-radius: 4px !important;
+    color: #5f6368 !important;
+    font-size: 14px !important;
+}
+
+/* If there's a simple "Next >" text, style it like Google */
+table.uZgmoc,
+.pagination {
+    font-family: arial, sans-serif !important;
+}
+
+/* Remove any existing table styling that interferes */
+table.uZgmoc {
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+    background: transparent !important;
+    border: none !important;
+}
+
+table.uZgmoc td {
+    border: none !important;
+    background: transparent !important;
+    padding: 0 !important;
+    vertical-align: middle !important;
+}
+
+/* Dark theme support */
+.dark table.uZgmoc a,
+.dark .pagination a,
+.dark div[role="navigation"] a,
+.dark nav[role="navigation"] a {
+    color: #8ab4f8 !important;
+}
+
+.dark table.uZgmoc a:hover,
+.dark .pagination a:hover,
+.dark div[role="navigation"] a:hover,
+.dark nav[role="navigation"] a:hover {
+    background-color: rgba(138, 180, 248, 0.1) !important;
+}
+
+.dark table.uZgmoc .current,
+.dark table.uZgmoc span[aria-current="page"],
+.dark .pagination .current,
+.dark .pagination span[aria-current="page"],
+.dark div[role="navigation"] .current,
+.dark div[role="navigation"] span[aria-current="page"],
+.dark nav[role="navigation"] .current,
+.dark nav[role="navigation"] span[aria-current="page"] {
+    color: #8ab4f8 !important;
+    border-bottom-color: #8ab4f8 !important;
+}

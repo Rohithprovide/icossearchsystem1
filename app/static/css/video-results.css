@@ -1,0 +1,75 @@
+/* Video Results Styling */
+
+/* Hide common posted date elements */
+.LEwnzc,
+span[style*="color:#70757a"],
+span[style*="color: #70757a"],
+.g span[style*="color: rgb(112, 117, 122)"] {
+    display: none !important;
+}
+
+/* Target video thumbnails with class img.iUhyd and similar */
+img.iUhyd,
+.iUhyd img,
+div.CQ1OSb img,
+div[data-ved] img {
+    /* Make thumbnails bigger */
+    width: 180px !important;
+    height: 135px !important;
+    min-width: 180px !important;
+    min-height: 135px !important;
+    
+    /* Add hover effects */
+    transition: all 0.3s ease !important;
+    border-radius: 8px !important;
+    cursor: pointer !important;
+}
+
+/* Hover effects for video thumbnails */
+img.iUhyd:hover,
+.iUhyd img:hover,
+div.CQ1OSb img:hover,
+div[data-ved] img:hover {
+    transform: scale(1.05) !important;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2) !important;
+    border-radius: 12px !important;
+}
+
+/* Video result container adjustments for bigger thumbnails */
+div[data-ved],
+div.g {
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 16px !important;
+    margin-bottom: 24px !important;
+}
+
+/* Hide duration and posted date text specifically */
+div.g span:contains("Duration:"),
+div.g span:contains("Posted:"),
+div[data-ved] span:contains("Duration:"),
+div[data-ved] span:contains("Posted:") {
+    display: none !important;
+}
+
+/* More specific selectors for removing posted date */
+[class*="posted" i],
+[class*="date" i] {
+    display: none !important;
+}
+
+/* Remove any text nodes containing "Posted:" */
+span[style*="color:#70757a"],
+span[style*="color: #70757a"],
+.LEwnzc span {
+    display: none !important;
+}
+
+/* Clean up video result layout */
+.g > div:first-child {
+    flex-shrink: 0 !important;
+}
+
+.g > div:last-child {
+    flex-grow: 1 !important;
+}

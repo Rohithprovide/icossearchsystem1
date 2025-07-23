@@ -1,0 +1,351 @@
+/* Voice Search Overlay Styles - Clean Implementation */
+
+.voice-search-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Dark theme overlay */
+[data-theme="dark"] .voice-search-overlay,
+body.dark .voice-search-overlay {
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.voice-search-content {
+    background: #ffffff;
+    background-color: #ffffff;
+    border-radius: 24px;
+    padding: 32px;
+    width: 90%;
+    max-width: 420px;
+    text-align: center;
+    animation: slideUp 0.3s ease-out;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08), 0 8px 16px rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    opacity: 1 !important;
+    position: relative;
+}
+
+/* Additional high-specificity rule to ensure background consistency */
+div.voice-search-overlay div.voice-search-content {
+    opacity: 1 !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+/* Dark theme overrides using media query for system theme */
+@media (prefers-color-scheme: dark) {
+    .voice-search-overlay {
+        background: rgba(0, 0, 0, 0.6) !important;
+    }
+    
+    .voice-search-content,
+    div.voice-search-overlay div.voice-search-content {
+        background: #303134 !important;
+        background-color: #303134 !important;
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 8px 16px rgba(0, 0, 0, 0.2) !important;
+        color: #ffffff !important;
+    }
+    
+    .voice-listening-text {
+        color: #bbbbbb !important;
+    }
+    
+    .voice-close-btn {
+        color: #ffffff !important;
+        background: rgba(232, 234, 237, 0.1) !important;
+    }
+    
+    .voice-close-btn:hover {
+        background: rgba(232, 234, 237, 0.2) !important;
+    }
+    
+    .voice-transcript-text {
+        color: #ffffff !important;
+    }
+    
+    .voice-instructions {
+        color: #bbbbbb !important;
+    }
+}
+
+/* Dark theme overrides for explicit dark theme selection - Enhanced specificity */
+html:has(link[href*="dark-theme.css"]) .voice-search-overlay,
+body:has(link[href*="dark-theme.css"]) .voice-search-overlay,
+html:has(link[href*="dark-theme.css"]) div.voice-search-overlay,
+body:has(link[href*="dark-theme.css"]) div.voice-search-overlay {
+    background: rgba(0, 0, 0, 0.6) !important;
+}
+
+html:has(link[href*="dark-theme.css"]) .voice-search-content,
+html:has(link[href*="dark-theme.css"]) div.voice-search-overlay div.voice-search-content,
+body:has(link[href*="dark-theme.css"]) .voice-search-content,
+body:has(link[href*="dark-theme.css"]) div.voice-search-overlay div.voice-search-content,
+html:has(link[href*="dark-theme.css"]) .voice-search-overlay .voice-search-content,
+body:has(link[href*="dark-theme.css"]) .voice-search-overlay .voice-search-content {
+    background: #303134 !important;
+    background-color: #303134 !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 8px 16px rgba(0, 0, 0, 0.2) !important;
+    color: #ffffff !important;
+}
+
+html:has(link[href*="dark-theme.css"]) .voice-listening-text,
+body:has(link[href*="dark-theme.css"]) .voice-listening-text {
+    color: #bbbbbb !important;
+}
+
+
+
+html:has(link[href*="dark-theme.css"]) .voice-transcript-text,
+body:has(link[href*="dark-theme.css"]) .voice-transcript-text {
+    color: #ffffff !important;
+}
+
+html:has(link[href*="dark-theme.css"]) .voice-instructions,
+body:has(link[href*="dark-theme.css"]) .voice-instructions {
+    color: #bbbbbb !important;
+}
+
+.voice-search-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.voice-listening-text {
+    font-size: 16px;
+    font-weight: 400;
+    color: #5f6368;
+    text-align: center;
+    margin: 0;
+    letter-spacing: 0.5px;
+    opacity: 0.8;
+    animation: fadeInOut 2s ease-in-out infinite;
+    text-transform: none !important;
+}
+
+
+
+.voice-microphone-container {
+    position: relative;
+    margin: 30px 0 40px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.voice-microphone-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #4285f4 0%, #5d8bfc 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 32px;
+    position: relative;
+    z-index: 2;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 24px rgba(66, 133, 244, 0.25), 0 2px 8px rgba(66, 133, 244, 0.15);
+}
+
+.voice-microphone-icon.listening {
+    background: linear-gradient(135deg, #4285f4 0%, #5d8bfc 100%);
+    box-shadow: 0 8px 32px rgba(66, 133, 244, 0.4), 0 4px 16px rgba(66, 133, 244, 0.25);
+    animation: pulse 1.5s ease-in-out infinite;
+    transform: scale(1.05);
+}
+
+.voice-pulse-animation {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: transparent;
+    border: 2px solid rgba(66, 133, 244, 0.4);
+    opacity: 0;
+    z-index: 1;
+}
+
+.voice-pulse-animation.active {
+    animation: pulseRing 2s ease-out infinite;
+    opacity: 1;
+}
+
+.voice-transcript-text {
+    font-size: 22px;
+    color: #202124;
+    margin: 32px 0 24px 0;
+    min-height: 28px;
+    font-weight: 400;
+    line-height: 1.4;
+    text-align: center;
+}
+
+.voice-instructions {
+    font-size: 15px;
+    color: #5f6368;
+    margin-top: 8px;
+    opacity: 0.85;
+    font-weight: 400;
+    line-height: 1.3;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes pulseRing {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+@keyframes fadeInOut {
+    0%, 100% {
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+/* Prevent body scroll when voice search is active */
+body.voice-search-active {
+    overflow: hidden;
+}
+
+/* Dark theme adjustments */
+[data-theme="dark"] .voice-search-content,
+body.dark .voice-search-content {
+    background: #202124 !important;
+    background-color: #202124 !important;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 8px 16px rgba(0, 0, 0, 0.2);
+    opacity: 1 !important;
+}
+
+[data-theme="dark"] .voice-listening-text,
+body.dark .voice-listening-text {
+    color: #9aa0a6;
+}
+
+
+
+[data-theme="dark"] .voice-transcript-text,
+body.dark .voice-transcript-text {
+    color: #e8eaed;
+}
+
+[data-theme="dark"] .voice-instructions,
+body.dark .voice-instructions {
+    color: #9aa0a6;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .voice-search-content {
+        width: 95%;
+        padding: 30px 20px;
+        margin: 20px;
+    }
+    
+    .voice-microphone-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 24px;
+    }
+    
+    .voice-pulse-animation {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .voice-listening-text {
+        font-size: 16px;
+    }
+    
+    .voice-transcript-text {
+        font-size: 18px;
+    }
+    
+    .voice-instructions {
+        font-size: 13px;
+    }
+}
+
+/* Microphone hover effects removed */
+
+/* Add visual feedback when mic is clicked */
+.search-icon-right:active {
+    transform: scale(0.95);
+    transition: transform 0.1s ease;
+}
+
+/* Final override for dark theme voice search - highest priority */
+html:has([href*="dark-theme.css"]) .voice-search-content,
+html:has([href*="dark-theme.css"]) div.voice-search-overlay div.voice-search-content,
+body:has([href*="dark-theme.css"]) .voice-search-content,
+body:has([href*="dark-theme.css"]) div.voice-search-overlay div.voice-search-content,
+html:has([href*="dark-theme.css"]) .voice-search-overlay .voice-search-content,
+body:has([href*="dark-theme.css"]) .voice-search-overlay .voice-search-content {
+    background: #303134 !important;
+    background-color: #303134 !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 8px 16px rgba(0, 0, 0, 0.2) !important;
+}
+
+html:has([href*="dark-theme.css"]) .voice-search-overlay,
+body:has([href*="dark-theme.css"]) .voice-search-overlay {
+    background: rgba(0, 0, 0, 0.6) !important;
+}

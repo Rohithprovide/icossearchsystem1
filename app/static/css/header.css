@@ -1,0 +1,701 @@
+header {
+    font-family: Roboto,HelveticaNeue,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    color: #3C4043;
+    word-wrap: break-word;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    padding: 8px 20px 5px 20px;
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0;
+}
+
+.logo-link, .logo-letter {
+    text-decoration: none !important;
+    letter-spacing: -1px;
+    text-align: center;
+    border-radius: 2px 0 0 0;
+}
+
+.result-config {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.mobile-logo {
+    font: 22px/36px Futura, Arial, sans-serif;
+    padding-left: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-div {
+    letter-spacing: -1px;
+    font: 20pt Futura, Arial, sans-serif;
+    height: 100px;
+    font-smoothing: antialiased;
+    flex-shrink: 0;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-bar-desktop {
+    border-radius: 24px;
+    height: 44px !important;
+    width: 100%;
+    max-width: 700px !important;
+    min-width: 500px !important;
+    border: 1px solid #dfe1e5;
+    padding: 0 16px;
+    font-size: 16px;
+    box-shadow: 0 2px 5px 1px rgba(64,60,67,.16);
+    outline: none;
+    background-color: #fff;
+}
+
+/* Add left padding when inside header search container */
+.header-search-container .search-bar-desktop {
+    padding-left: 50px !important;
+}
+
+.search-bar-desktop:hover {
+    box-shadow: 0 2px 8px rgba(32,33,36,.28);
+    border-color: rgba(223,225,229,0);
+}
+
+.search-bar-desktop:focus {
+    box-shadow: 0 2px 8px rgba(32,33,36,.28);
+    border-color: rgba(223,225,229,0);
+    outline: none;
+}
+
+/* Header search clear icon styling */
+.header-container .search-div .header-clear-icon,
+.search-div .header-clear-icon,
+#search-clear.header-clear-icon {
+    position: absolute !important;
+    right: 16px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    color: #70757a !important;
+    font-size: 16px !important;
+    z-index: 1000 !important;
+    cursor: pointer !important;
+    padding: 8px !important;
+    border-radius: 50% !important;
+    transition: all 0.2s ease !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.header-container .search-div .header-clear-icon:hover,
+.search-div .header-clear-icon:hover,
+#search-clear.header-clear-icon:hover {
+    background-color: #f1f3f4 !important;
+    color: #202124 !important;
+}
+
+/* Header search clear icon - new styling */
+.header-autocomplete {
+    position: relative !important;
+}
+
+.header-search-clear {
+    position: absolute !important;
+    right: 20px !important;
+    top: 15% !important;
+    transform: translateY(-50%) !important;
+    color: #70757a !important;
+    font-size: 18px !important;
+    cursor: pointer !important;
+    z-index: 1001 !important;
+    padding: 8px !important;
+    border-radius: 50% !important;
+    transition: all 0.2s ease !important;
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+}
+
+.header-search-clear:hover {
+    background-color: #f1f3f4 !important;
+    color: #202124 !important;
+}
+
+/* Ensure the search bar has proper padding for icons */
+.header-autocomplete .search-bar-input {
+    padding-right: 55px !important;
+    padding-left: 45px !important;
+}
+
+/* Show clear icon when search has content */
+.header-search-clear.show {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Header search container */
+.header-search-container {
+    position: relative !important;
+    width: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+/* Header search magnifying glass icon - override main.css with higher specificity */
+.header-search-container .search-icon-left,
+.header-autocomplete .search-icon-left {
+    position: absolute !important;
+    left: 18px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    color: #9aa0a6 !important;
+    font-size: 16px !important;
+    z-index: 1001 !important;
+    pointer-events: none !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Remove any blue borders/outlines from search inputs - but keep desktop search bar styling */
+#search-bar:not(.search-bar-desktop), .search-bar-input:not(.search-bar-desktop), input[type="text"]:not(.search-bar-desktop) {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+#search-bar:focus:not(.search-bar-desktop), .search-bar-input:focus:not(.search-bar-desktop), input[type="text"]:focus:not(.search-bar-desktop) {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    text-decoration: none !important;
+    border-bottom: none !important;
+}
+
+/* Force proper search bar styling with high specificity */
+.header-container .search-div .search-bar-desktop,
+#search-bar.search-bar-desktop {
+    border: 1px solid #dfe1e5 !important;
+    border-radius: 24px !important;
+    box-shadow: 0 2px 5px 1px rgba(64,60,67,.16) !important;
+    background-color: #fff !important;
+    text-decoration: none !important;
+}
+
+.header-container .search-div .search-bar-desktop:hover,
+#search-bar.search-bar-desktop:hover {
+    box-shadow: 0 2px 8px rgba(32,33,36,.28) !important;
+    border-color: #dadce0 !important;
+}
+
+.header-container .search-div .search-bar-desktop:focus,
+#search-bar.search-bar-desktop:focus {
+    box-shadow: 0 2px 8px rgba(32,33,36,.28) !important;
+    border-color: #dadce0 !important;
+    outline: none !important;
+}
+
+/* Autocomplete container positioning */
+.autocomplete, .header-autocomplete {
+    position: relative !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* When autocomplete is active, modify search bar to connect seamlessly */
+.autocomplete:has(.autocomplete-items:not(:empty)) .search-bar-desktop,
+.header-autocomplete:has(.autocomplete-items:not(:empty)) .search-bar-desktop,
+.autocomplete.has-suggestions .search-bar-desktop,
+.header-autocomplete.has-suggestions .search-bar-desktop,
+.header-autocomplete:has(#autocomplete-list:not(:empty)) .search-bar-desktop {
+    border-radius: 24px 24px 0 0 !important;
+    border-bottom: none !important;
+    box-shadow: 0 2px 5px 1px rgba(64,60,67,.16) !important;
+}
+
+/* Specific fixes for search results page autocomplete positioning */
+.header-container .search-div .header-autocomplete {
+    position: relative !important;
+    z-index: 999 !important;
+}
+
+.header-container .search-div .header-autocomplete .search-bar-desktop {
+    position: relative !important;
+    z-index: 1000 !important;
+}
+
+/* Style autocomplete dropdown like Google - seamlessly connected */
+#autocomplete-list {
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 1000 !important;
+    border: 1px solid #dfe1e5 !important;
+    border-top: none !important;
+    border-radius: 0 0 24px 24px !important;
+    box-shadow: 0 4px 12px rgba(32,33,36,.28) !important;
+    background-color: #fff !important;
+    margin-top: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    overflow: hidden !important;
+    width: 100% !important;
+    max-height: 400px !important;
+    overflow-y: auto !important;
+}
+
+/* Ensure header autocomplete is properly positioned */
+.header-autocomplete #autocomplete-list {
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    right: 0 !important;
+    margin: 0 !important;
+    transform: none !important;
+    margin-top: -1px !important;
+}
+
+/* Force autocomplete to connect seamlessly in search results */
+.header-container .header-autocomplete #autocomplete-list {
+    position: absolute !important;
+    top: calc(100% - 1px) !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+}
+
+/* Hide when empty */
+#autocomplete-list:empty {
+    display: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    background-color: transparent !important;
+}
+
+#autocomplete-list div {
+    background-color: #fff !important;
+    border-bottom: none !important;
+    padding: 8px 14px !important;
+    font-size: 14px !important;
+    color: #202124 !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    transition: background-color 0.1s ease !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+#autocomplete-list div:hover {
+    background-color: #f8f9fa !important;
+}
+
+#autocomplete-list div.autocomplete-active {
+    background-color: #f8f9fa !important;
+}
+
+/* Add subtle separators between suggestions */
+#autocomplete-list div:not(:last-child) {
+    border-bottom: 1px solid #f1f3f4 !important;
+}
+
+/* Ensure autocomplete container matches search bar width exactly */
+.search-div .autocomplete,
+.search-div .header-autocomplete {
+    width: 100% !important;
+    max-width: 700px !important;
+    min-width: 500px !important;
+    position: relative !important;
+}
+
+/* Fix search bar width consistency between pages */
+.header-container .search-div {
+    flex: 1 !important;
+    max-width: 700px !important;
+    min-width: 500px !important;
+    position: relative !important;
+    margin: 0 20px !important;
+}
+
+/* Ensure the flex container doesn't add extra spacing */
+.header-autocomplete > div[style*="display: flex"] {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+}
+
+/* Additional styling to ensure seamless integration */
+.autocomplete-items {
+    font-family: Roboto,HelveticaNeue,Arial,sans-serif !important;
+    line-height: 1.4 !important;
+}
+
+.autocomplete-items div {
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+/* Specifically target the blue line issue - only for search container, not autocomplete */
+.autocomplete-list-autocomplete,
+.header-autocomplete > div:not(.autocomplete-items),
+.search-div > div:not(.autocomplete-items) {
+    border-bottom: none !important;
+    border: none !important;
+    background: transparent !important;
+}
+
+/* Remove any blue underlines from search input and container */
+#search-bar, 
+.search-bar-desktop,
+.header-autocomplete,
+.autocomplete {
+    border-bottom: none !important;
+    text-decoration: none !important;
+}
+
+.search-div {
+    flex: 1;
+    max-width: 700px;
+    margin-right: 20px;
+}
+
+.header-autocomplete {
+    width: 100%;
+    flex: 1;
+    border-radius: 24px;
+}
+
+.search-form {
+    height: 39px;
+    display: flex;
+    width: 100%;
+    margin: 0px;
+}
+
+.search-input {
+    background: none;
+    margin: 2px 4px 2px 8px;
+    display: block;
+    font-size: 16px;
+    padding: 0 0 0 8px;
+    flex: 1;
+    height: 35px;
+    outline: none;
+    border: none;
+    width: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    overflow: hidden;
+}
+
+.tracking-link {
+    font-size: large;
+    text-align: center;
+    margin: 15px;
+    display: block;
+}
+
+#main>div:focus-within {
+    border-radius: 8px;
+    box-shadow: none;
+}
+
+#mobile-header-logo {
+    height: 1.75em;
+}
+
+.mobile-input-div {
+    width: 100%;
+}
+
+.mobile-search-bar {
+    display: block;
+    font-size: 16px;
+    padding: 0 0 0 8px;
+    padding-right: 0px;
+    -webkit-box-flex: 1;
+    height: 35px;
+    outline: none;
+    border: none;
+    width: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,.00);
+    overflow: hidden;
+    border: 0px !important;
+}
+
+.autocomplete-mobile{
+    display: -webkit-box;
+    width: 100%;
+}
+
+.desktop-header-logo {
+    height: 1.4em;
+}
+
+.header-autocomplete {
+    width: 100%;
+    flex: 1
+}
+
+a {
+    color: #1967D2;
+    text-decoration: none;
+    tap-highlight-color: rgba(0, 0, 0, .10);
+}
+
+.header-tab-div {
+    border-bottom: 1px solid #dadce0;
+    overflow: hidden;
+    margin-bottom: 0;
+    margin-top: 0;
+    background: #fff;
+}
+
+.header-tab-div-2 {
+    height: 48px;
+    overflow: hidden;
+    padding: 0 20px 0 15px;
+}
+
+.header-tab-div-3 {
+    height: 48px;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.desktop-header {
+    height: 48px;
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+
+.header-tab {
+    box-pack: justify;
+    font-size: 14px;
+    line-height: 37px;
+    justify-content: space-between;
+}
+
+.desktop-header a, .desktop-header span {
+    color: #70757a;
+    display: block;
+    flex: none;
+    padding: 12px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 13px;
+    line-height: 16px;
+    border-radius: 0;
+    margin: 0 18px;
+    height: 48px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease-in-out;
+    position: relative;
+}
+
+/* Navigation tabs - no hover effects as per user request */
+.desktop-header a,
+.mobile-header a,
+.header-tab-a {
+    text-decoration: none !important;
+}
+
+.desktop-header a:hover,
+.mobile-header a:hover,
+.header-tab-a:hover {
+    text-decoration: none !important;
+    color: inherit !important;
+    font-weight: normal !important;
+    font-style: normal !important;
+    background-color: transparent !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+}
+
+/* Removed specific Maps styling - let it use the universal hover effect */
+
+/* Removed old animation - using simple text-decoration now */
+
+span.header-tab-span {
+    border-bottom: 3px solid #4285f4;
+    color: #1a73e8;
+    font-weight: 500;
+    position: relative;
+    background-color: transparent;
+    border-radius: 0;
+}
+
+/* Ensure selected tab doesn't get hover effects */
+span.header-tab-span:hover {
+    transform: none;
+    background-color: transparent;
+}
+
+.mobile-header {
+    height: 39px;
+    display: box;
+    display: flex;
+    overflow-x: scroll;
+    width: 100%;
+    padding-left: 12px;
+}
+
+.mobile-header a, .mobile-header span {
+    color: #70757a;
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 12px;
+    transition: all 0.2s ease-in-out;
+    border-radius: 0;
+    position: relative;
+}
+
+/* Mobile hover effects - same as desktop */
+.mobile-header a:hover {
+    color: #202124 !important;
+    text-decoration: underline !important;
+    text-decoration-color: #dadce0 !important;
+    text-decoration-thickness: 2px !important;
+    text-underline-offset: 6px !important;
+}
+
+/* Mobile touch feedback */
+.mobile-header a:active {
+    color: #202124 !important;
+    text-decoration: underline !important;
+    text-decoration-color: #dadce0 !important;
+}
+
+span.mobile-tab-span {
+    border-bottom: 2px solid #202124;
+    color: #202124;
+    height: 26px;
+    /* margin: 0 12px; */
+    /* padding: 0; */
+}
+
+.desktop-header input {
+    margin: 2px 4px 2px 8px;
+}
+
+a.header-tab-a:visited {
+    color: #70757a;
+}
+
+.header-tab-div-end {
+    border-left: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.adv-search {
+    font-size: 30px;
+    transition: all 0.2s ease-in-out;
+    padding: 4px;
+    border-radius: 8px;
+}
+
+.adv-search:hover {
+    cursor: pointer;
+    background-color: rgba(60, 64, 67, 0.08);
+    border-radius: 8px;
+    padding: 4px;
+    transition: all 0.2s ease-in-out;
+    transform: scale(1.1);
+}
+
+#adv-search-toggle {
+    display: none;
+}
+
+
+
+.result-collapsible {
+    max-height: 0px;
+    overflow: hidden;
+    transition: max-height .25s linear;
+}
+
+.search-bar-input {
+    display: block;
+    font-size: 16px;
+    padding: 0 0 0 8px;
+    flex: 1;
+    height: 35px;
+    outline: none;
+    border: none;
+    width: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    overflow: hidden;
+}
+
+#result-country {
+    max-width: 200px;
+}
+
+/* Search clear icon styling */
+.search-clear-icon {
+    color: #70757a !important;
+    font-size: 16px !important;
+    cursor: pointer !important;
+    padding: 4px !important;
+    border-radius: 50% !important;
+    transition: background-color 0.2s ease !important;
+}
+
+.search-clear-icon:hover {
+    background-color: #f1f3f4 !important;
+    color: #202124 !important;
+}
+
+/* Ensure proper positioning within search bar */
+.header-autocomplete {
+    position: relative !important;
+}
+
+.search-bar-desktop {
+    padding-right: 80px !important;
+}
+
+@media (max-width: 801px) {
+    .header-tab-div {
+        margin-bottom: 10px !important
+    }
+}
+
+/* Microphone hover effects removed - no background change on hover */
+.search-icon-right.recording {
+    color: #ea4335 !important;
+    transform: scale(1.1);
+}
+
+.search-icon-right.recording {
+    color: #ea4335 !important;
+    animation: pulse 1.5s infinite;
+}
+
+.search-icon-right.recording {
+    color: #ea4335 !important;
+}

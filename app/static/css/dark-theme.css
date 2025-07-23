@@ -1,0 +1,699 @@
+html {
+    background: var(--whoogle-dark-page-bg) !important;
+}
+
+body {
+    background: var(--whoogle-dark-page-bg) !important;
+}
+
+div {
+    color: var(--whoogle-dark-text) !important;
+}
+
+label {
+    color: var(--whoogle-dark-contrast-text) !important;
+}
+
+li a {
+    color: var(--whoogle-dark-result-url) !important;
+}
+
+li {
+    color: var(--whoogle-dark-text) !important;
+}
+
+.anon-view {
+    color: var(--whoogle-dark-text) !important;
+    text-decoration: underline;
+}
+
+textarea {
+    background: var(--whoogle-dark-page-bg) !important;
+    color: var(--whoogle-dark-text) !important;
+}
+
+a:visited h3 div, a:visited .qXLe6d {
+    color: #CC99FF !important;
+}
+
+a:link h3 div, a:link .qXLe6d {
+    color: #99C3FF !important;
+}
+
+a:link div, a:link .fYyStc {
+    color: var(--whoogle-dark-result-url) !important;
+}
+
+div span {
+    color: var(--whoogle-dark-secondary-text) !important;
+}
+
+/* Dark theme modal styles */
+.modal {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(17, 24, 39, 0.9)) !important;
+}
+
+.modal-content {
+    background: linear-gradient(145deg, var(--whoogle-dark-element-bg), rgba(31, 41, 55, 0.95)) !important;
+    border: 1px solid rgba(75, 85, 99, 0.3) !important;
+    box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.4),
+        0 8px 24px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Dark theme modal overrides */
+.modal {
+    background: rgba(0, 0, 0, 0.4) !important;
+}
+
+.modal-content {
+    background: var(--whoogle-dark-page-bg) !important;
+    border: 1px solid rgba(75, 85, 99, 0.3) !important;
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.4),
+        0 8px 16px rgba(0, 0, 0, 0.3) !important;
+}
+
+.modal-header {
+    background: var(--whoogle-dark-page-bg) !important;
+    border-bottom: 1px solid rgba(75, 85, 99, 0.3) !important;
+}
+
+.modal-header h2 {
+    color: var(--whoogle-dark-text) !important;
+}
+
+.close-modal {
+    color: var(--whoogle-dark-contrast-text) !important;
+}
+
+.close-modal:hover {
+    color: var(--whoogle-dark-text) !important;
+    background-color: rgba(75, 85, 99, 0.3) !important;
+}
+
+.setting-item {
+    border-bottom: 1px solid rgba(75, 85, 99, 0.3) !important;
+}
+
+.setting-item:hover {
+    background-color: rgba(75, 85, 99, 0.1) !important;
+}
+
+.setting-icon {
+    color: var(--whoogle-dark-contrast-text) !important;
+}
+
+.setting-title {
+    color: var(--whoogle-dark-text) !important;
+}
+
+.setting-description {
+    color: var(--whoogle-dark-contrast-text) !important;
+}
+
+.theme-select {
+    background: var(--whoogle-dark-result-bg) !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%239ca3af' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E") !important;
+    background-position: right 8px center !important;
+    background-repeat: no-repeat !important;
+    background-size: 16px !important;
+    border: 1px solid rgba(75, 85, 99, 0.5) !important;
+    color: var(--whoogle-dark-text) !important;
+    padding: 8px 32px 8px 12px !important;
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+}
+
+.theme-select:focus {
+    border-color: var(--whoogle-dark-logo) !important;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2) !important;
+}
+
+.toggle-slider {
+    background: rgba(75, 85, 99, 0.8) !important;
+}
+
+.toggle-switch input:checked + .toggle-slider {
+    background: #4285f4 !important;
+}
+
+.toggle-slider:before {
+    background: #ffffff !important;
+}
+
+.modal-buttons {
+    border-top: 1px solid rgba(75, 85, 99, 0.3) !important;
+}
+
+.modal-buttons .apply-btn {
+    background: #4285f4 !important;
+    color: #ffffff !important;
+}
+
+.modal-buttons .apply-btn:hover {
+    background: #3367d6 !important;
+}
+
+.settings-menu-icon {
+    color: var(--whoogle-dark-contrast-text) !important;
+}
+
+.settings-menu-icon:hover {
+    color: var(--whoogle-dark-text) !important;
+}
+
+input {
+    background-color: var(--whoogle-dark-page-bg) !important;
+    color: var(--whoogle-dark-text) !important;
+}
+
+select {
+    background: var(--whoogle-dark-page-bg) !important;
+    color: var(--whoogle-dark-text) !important;
+}
+
+.search-container {
+    background-color: var(--whoogle-dark-page-bg) !important;
+}
+
+.ZINbbc, .ezO2md {
+    overflow: hidden;
+    box-shadow: 0 0 0 0 !important;
+    background-color: var(--whoogle-dark-result-bg) !important;
+    margin-bottom: 10px !important;
+    border-radius: 8px !important;
+}
+
+.BsXmcf {
+    background-color: unset !important;
+}
+
+.KP7LCb {
+    box-shadow: 0 0 0 0 !important;
+}
+
+.BVG0Nb {
+    box-shadow: 0 0 0 0 !important;
+    background-color: var(--whoogle-dark-page-bg) !important;
+}
+
+.ZINbbc.luh4tb {
+    background: var(--whoogle-dark-result-bg) !important;
+    margin-bottom: 24px !important;
+}
+
+.bRsWnc {
+    background-color: var(--whoogle-dark-result-bg) !important;
+}
+
+.x54gtf {
+    background-color: var(--whoogle-dark-divider) !important;
+}
+
+.Q0HXG {
+    background-color: var(--whoogle-dark-divider) !important;
+}
+
+.LKSyXe {
+    background-color: var(--whoogle-dark-divider) !important;
+}
+
+.home-search {
+    border-color: var(--whoogle-dark-element-bg) !important;
+}
+
+.sa1toc {
+        background: var(--whoogle-dark-page-bg) !important;
+}
+
+#search-bar {
+    border-color: var(--whoogle-dark-element-bg) !important;
+    color: var(--whoogle-dark-text) !important;
+    background-color: var(--whoogle-dark-result-bg) !important;
+    border-bottom: 2px solid var(--whoogle-dark-element-bg);
+}
+
+#search-bar:focus {
+    color: var(--whoogle-dark-text) !important;
+}
+
+#search-submit {
+    border: 1px solid var(--whoogle-dark-element-bg) !important;
+    background: var(--whoogle-dark-element-bg) !important;
+    color: var(--whoogle-dark-contrast-text) !important;
+}
+
+.info-text {
+    color: var(--whoogle-dark-contrast-text) !important;
+    opacity: 75%;
+}
+
+.collapsible {
+    color: var(--whoogle-dark-text) !important;
+}
+
+.collapsible:after {
+    color: var(--whoogle-dark-text) !important;
+}
+
+.active {
+    background-color: var(--whoogle-dark-element-bg) !important;
+    color: var(--whoogle-dark-contrast-text) !important;
+}
+
+.content, .result-config {
+    background-color: var(--whoogle-dark-element-bg) !important;
+    color: var(--whoogle-contrast-text) !important;
+}
+
+.active:after {
+    color: var(--whoogle-dark-contrast-text) !important;
+}
+
+.link {
+    color: var(--whoogle-dark-contrast-text);
+}
+
+.link-color {
+    color: var(--whoogle-dark-result-url) !important;
+}
+
+.autocomplete-items {
+    border: 1px solid var(--whoogle-dark-element-bg);
+}
+
+.autocomplete-items div {
+    color: var(--whoogle-dark-text);
+    background-color: var(--whoogle-dark-page-bg);
+    border-bottom: 1px solid var(--whoogle-dark-element-bg);
+}
+
+.autocomplete-items div:hover {
+    background-color: var(--whoogle-dark-element-bg);
+    color: var(--whoogle-dark-contrast-text) !important;
+}
+
+.autocomplete-active {
+    background-color: var(--whoogle-dark-element-bg) !important;
+    color: var(--whoogle-dark-contrast-text) !important;
+}
+
+.footer {
+    color: var(--whoogle-dark-text);
+}
+
+path {
+    fill: var(--whoogle-dark-logo);
+}
+
+.header-div {
+    background-color: var(--whoogle-dark-result-bg) !important;
+}
+
+#search-reset {
+    color: var(--whoogle-dark-text) !important;
+}
+
+.search-icon-right.recording {
+    color: #ea4335 !important;
+    transform: scale(1.1);
+}
+
+.search-icon-right.recording {
+    color: #ea4335 !important;
+    animation: pulse 1.5s infinite;
+}
+
+/* Google-style microphone hover effect for dark theme */
+body:has(link[href*="dark-theme.css"]) .search-input-container .search-icon-right:hover,
+body:has(link[href*="dark-theme.css"]) .search-input-container .fa-microphone:hover,
+body:has(link[href*="dark-theme.css"]) i.fa-solid.fa-microphone.search-icon-right:hover,
+.search-input-container .search-icon-right:hover,
+.search-input-container .fa-microphone:hover,
+i.fa-solid.fa-microphone.search-icon-right:hover {
+    background-color: rgba(232, 234, 237, 0.08) !important;
+    border-radius: 50% !important;
+    padding: 8px !important;
+    transition: background-color 0.15s ease !important;
+}
+
+.mobile-search-bar {
+    background-color: var(--whoogle-dark-result-bg) !important;
+    color: var(--whoogle-dark-text) !important;
+}
+
+.search-bar-desktop {
+    color: var(--whoogle-dark-text) !important;
+    background-color: #5F6368 !important;
+}
+
+.home-search {
+    background-color: var(--whoogle-dark-result-bg) !important;
+    border-color: var(--whoogle-dark-result-bg) !important;
+}
+
+.search-input-container {
+    background-color: var(--whoogle-dark-result-bg) !important;
+    border-radius: 24px !important;
+}
+
+/* Override all search bar backgrounds in dark theme */
+#search-bar, 
+input#search-bar, 
+#search-bar.home-search,
+.home-search,
+input.home-search {
+    background-color: var(--whoogle-dark-result-bg) !important;
+    background: var(--whoogle-dark-result-bg) !important;
+}
+
+/* Autocomplete items dark theme styling - High specificity */
+.autocomplete #autocomplete-list,
+.header-autocomplete #autocomplete-list,
+#autocomplete-list {
+    background-color: var(--whoogle-dark-result-bg) !important;
+    border-color: var(--whoogle-dark-result-bg) !important;
+    border-radius: 0 0 24px 24px !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4) !important;
+}
+
+.autocomplete #autocomplete-list div,
+.header-autocomplete #autocomplete-list div,
+#autocomplete-list div,
+div[id*="autocomplete"] {
+    background-color: var(--whoogle-dark-result-bg) !important;
+    color: var(--whoogle-dark-text) !important;
+    border-bottom: none !important;
+}
+
+.autocomplete #autocomplete-list div:hover,
+.header-autocomplete #autocomplete-list div:hover,
+#autocomplete-list div:hover,
+.autocomplete #autocomplete-list div.autocomplete-active,
+.header-autocomplete #autocomplete-list div.autocomplete-active,
+#autocomplete-list div.autocomplete-active {
+    background-color: var(--whoogle-dark-page-bg) !important;
+    color: var(--whoogle-dark-text) !important;
+}
+
+.ip-text-div, .update_available, .cb_label, .cb {
+  color: var(--whoogle-dark-secondary-text) !important;
+}
+
+.cb:focus {
+  color: var(--whoogle-dark-contrast-text) !important;
+}
+
+.desktop-header, .mobile-header {
+    background-color: #202124 !important;
+}
+
+/* Force header background to match dark theme page background */
+header, .header-container, .header-div {
+    background-color: #202124 !important;
+    background: #202124 !important;
+}
+
+/* Navigation tabs container background - target all possible tab containers */
+.nav-tabs, .nav-tab-container, .tab-container, 
+.desktop-nav-tabs, .mobile-nav-tabs, .nav-bar,
+.nav-links, .navigation-tabs, .tabs-wrapper,
+.header-tab-div, .header-tab-div-2, .header-tab-div-3,
+.tab-header, .tab-navigation, .search-tabs,
+div[class*="tab"], div[class*="nav"] {
+    background-color: #202124 !important;
+    background: #202124 !important;
+}
+
+/* Force background on any div containing tabs */
+div:has(a[href*="tbm="]), 
+div:has(a[href*="All"]),
+div:has(a[href*="Images"]),
+div:has(a[href*="Maps"]),
+div:has(a[href*="Videos"]),
+div:has(a[href*="News"]) {
+    background-color: #202124 !important;
+    background: #202124 !important;
+}
+
+/* Search result links color in dark theme - comprehensive override excluding navigation */
+.result a, .search-result a, .result h3 a, .search-result h3 a,
+a[href*="/url"]:not(.header-tab-div a):not(.header-tab-div-2 a):not(.header-tab-div-3 a), 
+a[href*="http"]:not(.header-tab-div a):not(.header-tab-div-2 a):not(.header-tab-div-3 a), 
+.result-title a, .title-link,
+div[class*="result"] a:not(.header-tab-div a):not(.header-tab-div-2 a), 
+div[data-ved] a:not(.header-tab-div a), .LC20lb a,
+.yuRUbf a, .yuRUbf h3 a, .DKV0Md a, .tF2Cxc a, .tF2Cxc h3 a,
+a:link .qXLe6d:not(.header-tab-div *):not(.header-tab-div-2 *), 
+a:link h3 div:not(.header-tab-div *):not(.header-tab-div-2 *), 
+a:link h3 span:not(.header-tab-div *):not(.header-tab-div-2 *),
+a:link h3:not(.header-tab-div *):not(.header-tab-div-2 *), 
+a:link h3 *:not(.header-tab-div *):not(.header-tab-div-2 *), 
+h3 a:not(.header-tab-div *):not(.header-tab-div-2 *), 
+h3 a *:not(.header-tab-div *):not(.header-tab-div-2 *),
+div[role="link"] h3:not(.header-tab-div *), div[role="link"] a:not(.header-tab-div *), 
+.result h3:not(.header-tab-div *),
+.g h3 a, .g .LC20lb, .BNeawe, .BNeawe a, .vvjwJb {
+    color: #99C3FF !important;
+}
+
+/* Visited search result links - excluding navigation */
+.result a:visited, .search-result a:visited, .result h3 a:visited,
+a[href*="/url"]:visited:not(.header-tab-div a):not(.header-tab-div-2 a), 
+a[href*="http"]:visited:not(.header-tab-div a):not(.header-tab-div-2 a), 
+.result-title a:visited,
+div[class*="result"] a:visited:not(.header-tab-div a), 
+div[data-ved] a:visited:not(.header-tab-div a), .LC20lb a:visited,
+h3 a:visited:not(.header-tab-div *):not(.header-tab-div-2 *), 
+.yuRUbf a:visited, .yuRUbf h3 a:visited, .DKV0Md a:visited,
+.tF2Cxc a:visited, .tF2Cxc h3 a:visited, 
+a:visited .qXLe6d:not(.header-tab-div *):not(.header-tab-div-2 *), 
+a:visited h3 div:not(.header-tab-div *):not(.header-tab-div-2 *), 
+a:visited h3 span:not(.header-tab-div *):not(.header-tab-div-2 *),
+a:visited h3:not(.header-tab-div *):not(.header-tab-div-2 *), 
+a:visited h3 *:not(.header-tab-div *):not(.header-tab-div-2 *), 
+h3 a:visited *:not(.header-tab-div *):not(.header-tab-div-2 *), 
+.g h3 a:visited, .g .LC20lb:visited, .BNeawe:visited, .BNeawe a:visited, .vvjwJb:visited {
+    color: #CC99FF !important;
+}
+
+.settings-menu-icon {
+    color: var(--whoogle-dark-text) !important;
+}
+
+.settings-menu-icon:hover {
+    background-color: var(--whoogle-dark-result-bg) !important;
+    color: var(--whoogle-dark-text) !important;
+}
+
+/* Logo styling for dark theme - force white text color with highest specificity */
+.search-results-logo .logo-text,
+.desktop-header-logo .logo-text,
+#mobile-header-logo .logo-text,
+.logo-div .logo-text,
+.logo-link .logo-text,
+.search-results-logo, 
+.desktop-header-logo, 
+#mobile-header-logo,
+.logo-div,
+.logo-link,
+.logo-text,
+.logo-div *,
+.logo-link *,
+.search-results-logo *,
+.desktop-header-logo *,
+#mobile-header-logo *,
+.logo-text * {
+    color: #ffffff !important;
+    fill: #ffffff !important;
+}
+
+/* Ensure search bar on results page has dark theme background and no border */
+.search-bar-desktop,
+input.search-bar-desktop,
+#search-bar.search-bar-desktop,
+.header-autocomplete input[type="text"],
+.header-autocomplete .search-bar-desktop {
+    background-color: #5F6368 !important;
+    background: #5F6368 !important;
+    color: var(--whoogle-dark-text) !important;
+    border: none !important;
+    border-color: transparent !important;
+    outline: none !important;
+}
+
+/* Clear icon styling for dark theme - better visibility against new search bar color */
+.search-clear-icon,
+.header-clear-icon,
+.header-search-clear,
+.clear-icon,
+i.fa-times,
+i.fa-xmark,
+.fa-solid.fa-xmark,
+.header-autocomplete .header-search-clear,
+i.fa-solid.fa-xmark.header-search-clear {
+    color: #dadce0 !important;
+    width: 24px !important;
+    height: 24px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 50% !important;
+    aspect-ratio: 1 !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    padding: 4px !important;
+}
+
+/* Only show clear icons when they have display:block (controlled by JavaScript) */
+.search-clear-icon[style*="display: block"],
+.header-clear-icon[style*="display: block"],
+.header-search-clear[style*="display: block"],
+.clear-icon[style*="display: block"],
+i.fa-times[style*="display: block"],
+i.fa-xmark[style*="display: block"],
+.fa-solid.fa-xmark[style*="display: block"],
+.header-autocomplete .header-search-clear[style*="display: block"],
+i.fa-solid.fa-xmark.header-search-clear[style*="display: block"] {
+    display: flex !important;
+}
+
+.search-clear-icon:hover,
+.header-clear-icon:hover,
+.header-search-clear:hover,
+.clear-icon:hover,
+i.fa-times:hover,
+i.fa-xmark:hover,
+.fa-solid.fa-xmark:hover {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
+}
+
+/* Override template inline styles - reduce padding on search bar to bring clear icon closer to text */
+.header-container .search-div .header-autocomplete .search-bar-desktop,
+.search-bar-desktop,
+#search-bar.search-bar-desktop,
+input.search-bar-desktop {
+    padding-right: 55px !important;
+}
+
+/* Specific fix for the header search clear icon positioning */
+.header-autocomplete i.fa-solid.fa-xmark.header-search-clear,
+i.fa-solid.fa-xmark#search-clear {
+    position: absolute !important;
+    right: 20px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    color: #dadce0 !important;
+    width: 20px !important;
+    height: 20px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 50% !important;
+    padding: 6px !important;
+    font-size: 14px !important;
+    z-index: 1001 !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+}
+
+/* Only show header clear icons when they have display:block (controlled by JavaScript) */
+.header-autocomplete i.fa-solid.fa-xmark.header-search-clear[style*="display: block"],
+i.fa-solid.fa-xmark#search-clear[style*="display: block"] {
+    display: flex !important;
+}
+
+.header-autocomplete i.fa-solid.fa-xmark.header-search-clear:hover,
+i.fa-solid.fa-xmark#search-clear:hover {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
+}
+
+/* AI Sidebar dark theme support */
+.right-sidebar,
+.right-sidebar *,
+.sidebar-content,
+.sidebar-content *,
+#right-sidebar,
+#right-sidebar * {
+    background: var(--whoogle-dark-result-bg) !important;
+    background-color: var(--whoogle-dark-result-bg) !important;
+    border-color: rgba(75, 85, 99, 0.3) !important;
+    color: var(--whoogle-dark-text) !important;
+}
+
+/* AI sidebar error states */
+.right-sidebar .error-message,
+.sidebar-content .error-message {
+    color: #ff6b6b !important;
+    background-color: rgba(255, 107, 107, 0.1) !important;
+}
+
+/* AI sidebar loading states */
+.right-sidebar .loading,
+.sidebar-content .loading {
+    color: var(--whoogle-dark-secondary-text) !important;
+}
+
+/* AI sidebar response content */
+.right-sidebar p,
+.right-sidebar div,
+.sidebar-content p,
+.sidebar-content div {
+    color: var(--whoogle-dark-text) !important;
+}
+
+/* AI sidebar headers */
+.right-sidebar h1,
+.right-sidebar h2,
+.right-sidebar h3,
+.right-sidebar h4,
+.right-sidebar h5,
+.right-sidebar h6,
+.sidebar-content h1,
+.sidebar-content h2,
+.sidebar-content h3,
+.sidebar-content h4,
+.sidebar-content h5,
+.sidebar-content h6 {
+    color: var(--whoogle-dark-text) !important;
+}
+
+/* Voice Search Popup Dark Theme Support */
+.voice-search-overlay {
+    background: rgba(0, 0, 0, 0.6) !important;
+}
+
+.voice-search-content,
+div.voice-search-overlay div.voice-search-content {
+    background: var(--whoogle-dark-result-bg) !important;
+    background-color: var(--whoogle-dark-result-bg) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 8px 16px rgba(0, 0, 0, 0.2) !important;
+    color: var(--whoogle-dark-text) !important;
+}
+
+.voice-listening-text {
+    color: var(--whoogle-dark-secondary-text) !important;
+}
+
+.voice-close-btn {
+    color: var(--whoogle-dark-text) !important;
+    background: rgba(232, 234, 237, 0.1) !important;
+}
+
+.voice-close-btn:hover {
+    background: rgba(232, 234, 237, 0.2) !important;
+}
+
+.voice-transcript-text {
+    color: var(--whoogle-dark-text) !important;
+}
+
+.voice-instructions {
+    color: var(--whoogle-dark-secondary-text) !important;
+}
+
+
