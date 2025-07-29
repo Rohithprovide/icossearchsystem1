@@ -204,6 +204,7 @@
                     {% if config.preferences %}
                         <input type="hidden" name="preferences" value="{{ config.preferences }}" />
                     {% endif %}
+                    <input type="hidden" name="url" value="{{ config.url or request.url_root }}" />
                     
                     <div class="setting-item">
                         <div class="setting-icon">
