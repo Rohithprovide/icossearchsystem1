@@ -146,11 +146,40 @@ class IcosUserPreferences:
         """
         modifiable_attributes = self._get_modifiable_preference_list()
         
+        # Handle legacy attribute names (from form data) and map them to internal names
+        override_mapping = {
+            'safe': 'safe_search_enabled',
+            'new_tab': 'open_links_new_tab', 
+            'ai_sidebar': 'ai_sidebar_active',
+            'theme': 'interface_theme'
+        }
+        
         for preference_key in modifiable_attributes:
+            # Check both direct key and legacy mapped key
+            actual_key = preference_key
+            legacy_key = None
+            for legacy, modern in override_mapping.items():
+                if modern == preference_key and legacy in overrides:
+                    legacy_key = legacy
+                    break
+            
             if preference_key in overrides:
-                setattr(self, preference_key, overrides[preference_key])
-            elif (preference_key not in overrides and 
+                # Direct key found
+                value = overrides[preference_key]
+                # Convert 'on' from HTML checkboxes to boolean
+                if value == 'on':
+                    value = True
+                setattr(self, preference_key, value)
+            elif legacy_key and legacy_key in overrides:
+                # Legacy key found 
+                value = overrides[legacy_key]
+                # Convert 'on' from HTML checkboxes to boolean
+                if value == 'on':
+                    value = True
+                setattr(self, preference_key, value)
+            elif (preference_key not in overrides and legacy_key not in overrides and 
                   modifiable_attributes[preference_key] == bool):
+                # Boolean attribute not found in overrides, set to False
                 setattr(self, preference_key, False)
         
         # Handle legacy theme attribute mapping that may have changed

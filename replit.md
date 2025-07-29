@@ -14,6 +14,10 @@ Privacy-focused search engine that provides Google search results without tracki
   - No security vulnerabilities detected during migration
 
 ## Recent Changes
+✓ **FIXED SETTINGS PANEL BUG** - July 29, 2025: Resolved critical issue where toggle buttons didn't persist after form submission
+  - Added proper checkbox value conversion in web_routes.py (HTML 'on' to boolean True)
+  - Fixed Config class preference override mapping for legacy form field names (safe → safe_search_enabled, etc.)
+  - Settings now properly save and persist across page reloads and hamburger menu reopening
 ✓ Fixed Flask app encryption key assignment using setattr to avoid LSP warnings
 ✓ Verified all Python dependencies are installed and working
 ✓ Confirmed gunicorn server running properly on port 5000  
