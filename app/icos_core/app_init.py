@@ -35,7 +35,8 @@ dot_env_path = os.getenv(
 if os.path.exists(dot_env_path):
     load_dotenv(dot_env_path)
 
-app.enc_key = generate_key()
+# Set encryption key using setattr to avoid LSP warnings
+setattr(app, 'enc_key', generate_key())
 
 if read_config_bool('HTTPS_ONLY'):
     app.config['SESSION_COOKIE_NAME'] = '__Secure-session'
