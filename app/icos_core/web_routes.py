@@ -437,6 +437,15 @@ def config():
         if 'url' not in config_data or not config_data['url']:
             config_data['url'] = g.user_config.url
 
+        # Convert checkbox values: HTML checkboxes send 'on' when checked, nothing when unchecked
+        # Convert 'on' to True, missing values to False for boolean settings
+        boolean_settings = ['safe', 'new_tab', 'ai_sidebar', 'view_image', 'anon_view', 'get_only', 'alts', 'nojs']
+        for setting in boolean_settings:
+            if setting in config_data:
+                config_data[setting] = config_data[setting] == 'on'
+            else:
+                config_data[setting] = False
+
         # Handle user agent configuration
         if 'user_agent' in config_data:
             if config_data['user_agent'] == 'custom':
