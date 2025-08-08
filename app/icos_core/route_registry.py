@@ -22,6 +22,7 @@ class IcosRouteRegistry(Enum):
     home = 'home'
     healthz = 'healthz'
     config = 'config'
+    about = 'about'
     opensearch = 'opensearch.xml'
     search = 'search'
     search_html = 'search.html'

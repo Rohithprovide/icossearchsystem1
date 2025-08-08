@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - ICOS Search</title>
+    <link rel="icon" type="image/svg+xml" href="static/img/favicon/favicon.svg">
+    <link rel="icon" type="image/x-icon" href="static/img/favicon/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    {% if config.theme %}
+        {% if config.theme == 'system' %}
+            <style>
+                @import "{{ cb_url('light-theme.css') }}" screen;
+                @import "{{ cb_url('dark-theme.css') }}" screen and (prefers-color-scheme: dark);
+            </style>
+        {% else %}
+            <link rel="stylesheet" href="{{ cb_url(config.theme + '-theme.css') }}"/>
+        {% endif %}
+    {% else %}
+        <link rel="stylesheet" href="{{ cb_url(('dark' if config.dark else 'light') + '-theme.css') }}"/>
+    {% endif %}
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: var(--background-color, #ffffff);
+            color: var(--text-color, #202124);
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--border-color, #e8eaed);
+        }
+        
+        .logo {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #4285f4, #34a853, #fbbc05, #ea4335);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            color: var(--text-secondary, #5f6368);
+        }
+        
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: var(--card-background, #f8f9fa);
+            border-radius: 8px;
+            border: 1px solid var(--border-color, #e8eaed);
+        }
+        
+        .section h2 {
+            color: var(--primary-color, #1a73e8);
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+        
+        .section h3 {
+            color: var(--text-color, #202124);
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .feature-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border-light, #f1f3f4);
+        }
+        
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .feature-list li i {
+            color: var(--primary-color, #1a73e8);
+            margin-right: 10px;
+            width: 20px;
+        }
+        
+        .acknowledgment {
+            background-color: var(--highlight-background, #e8f0fe);
+            border-left: 4px solid var(--primary-color, #1a73e8);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .tech-item {
+            text-align: center;
+            padding: 15px;
+            background-color: var(--background-color, #ffffff);
+            border-radius: 6px;
+            border: 1px solid var(--border-color, #e8eaed);
+        }
+        
+        .tech-item i {
+            font-size: 24px;
+            color: var(--primary-color, #1a73e8);
+            margin-bottom: 8px;
+        }
+        
+        .version-info {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color, #e8eaed);
+            color: var(--text-secondary, #5f6368);
+            font-size: 14px;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--primary-color, #1a73e8);
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            border: 1px solid var(--primary-color, #1a73e8);
+            transition: all 0.2s ease;
+        }
+        
+        .back-link:hover {
+            background-color: var(--primary-color, #1a73e8);
+            color: white;
+        }
+        
+        /* Dark theme adjustments */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --background-color: #202124;
+                --text-color: #e8eaed;
+                --text-secondary: #9aa0a6;
+                --card-background: #303134;
+                --border-color: #3c4043;
+                --border-light: #5f6368;
+                --primary-color: #8ab4f8;
+                --highlight-background: #1e3a5f;
+            }
+        }
+        
+        body:has(link[href*="dark-theme.css"]) {
+            --background-color: #202124;
+            --text-color: #e8eaed;
+            --text-secondary: #9aa0a6;
+            --card-background: #303134;
+            --border-color: #3c4043;
+            --border-light: #5f6368;
+            --primary-color: #8ab4f8;
+            --highlight-background: #1e3a5f;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="back-link">
+            <i class="fa-solid fa-arrow-left"></i> Back to Search
+        </a>
+        
+        <div class="header">
+            <div class="logo">ICOS Search</div>
+            <div class="subtitle">Privacy-Focused Search Engine</div>
+        </div>
+        
+        <div class="section">
+            <h2><i class="fa-solid fa-info-circle"></i> About ICOS Search</h2>
+            <p>ICOS Search is a privacy-focused search engine that provides Google search results without tracking, ads, or JavaScript requirements. Built with user privacy and data protection as core principles.</p>
+            
+            <h3>Key Features</h3>
+            <ul class="feature-list">
+                <li><i class="fa-solid fa-shield-halved"></i> No tracking or user data collection</li>
+                <li><i class="fa-solid fa-ad"></i> Ad-free search results</li>
+                <li><i class="fa-solid fa-code"></i> Works without JavaScript</li>
+                <li><i class="fa-solid fa-palette"></i> Customizable themes (Light/Dark/System)</li>
+                <li><i class="fa-solid fa-microphone"></i> Voice search support</li>
+                <li><i class="fa-solid fa-robot"></i> AI-powered search insights</li>
+                <li><i class="fa-solid fa-language"></i> Multi-language support</li>
+                <li><i class="fa-solid fa-mobile-alt"></i> Mobile-responsive design</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2><i class="fa-solid fa-heart"></i> Acknowledgments</h2>
+            
+            <div class="acknowledgment">
+                <h3>Built on Whoogle Search</h3>
+                <p>ICOS Search is built upon the excellent foundation of <strong>Whoogle Search</strong>, an open-source privacy-focused search engine. We extend our gratitude to the Whoogle community for their pioneering work in privacy-preserving search technology.</p>
+            </div>
+            
+            <div class="acknowledgment">
+                <h3>Open Source Libraries</h3>
+                <p>This project wouldn't be possible without the incredible open-source community. Special thanks to:</p>
+                <ul>
+                    <li><strong>Flask</strong> - Web framework for Python</li>
+                    <li><strong>BeautifulSoup4</strong> - HTML parsing and processing</li>
+                    <li><strong>Font Awesome</strong> - Icons and visual elements</li>
+                    <li><strong>Gunicorn</strong> - Python WSGI HTTP Server</li>
+                    <li><strong>Cryptography</strong> - Security and encryption</li>
+                </ul>
+            </div>
+            
+            <div class="acknowledgment">
+                <h3>Privacy Commitment</h3>
+                <p>We believe privacy is a fundamental right. ICOS Search operates with zero logging, no user tracking, and complete data anonymization. Your searches remain private and secure.</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2><i class="fa-solid fa-cogs"></i> Technology Stack</h2>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <i class="fa-brands fa-python"></i>
+                    <div><strong>Python</strong></div>
+                    <div>Backend Language</div>
+                </div>
+                <div class="tech-item">
+                    <i class="fa-solid fa-flask"></i>
+                    <div><strong>Flask</strong></div>
+                    <div>Web Framework</div>
+                </div>
+                <div class="tech-item">
+                    <i class="fa-brands fa-html5"></i>
+                    <div><strong>HTML5</strong></div>
+                    <div>Frontend Markup</div>
+                </div>
+                <div class="tech-item">
+                    <i class="fa-brands fa-css3-alt"></i>
+                    <div><strong>CSS3</strong></div>
+                    <div>Styling & Themes</div>
+                </div>
+                <div class="tech-item">
+                    <i class="fa-brands fa-js-square"></i>
+                    <div><strong>JavaScript</strong></div>
+                    <div>Interactive Features</div>
+                </div>
+                <div class="tech-item">
+                    <i class="fa-solid fa-server"></i>
+                    <div><strong>Gunicorn</strong></div>
+                    <div>WSGI Server</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2><i class="fa-solid fa-balance-scale"></i> License & Usage</h2>
+            <p>ICOS Search is developed as an enhancement to Whoogle Search, maintaining the same commitment to open-source principles and user privacy. The project respects all original licensing terms while adding enhanced features and improved user experience.</p>
+            
+            <p><strong>Usage Guidelines:</strong></p>
+            <ul class="feature-list">
+                <li><i class="fa-solid fa-check"></i> Free for personal and educational use</li>
+                <li><i class="fa-solid fa-check"></i> Respects user privacy and data protection</li>
+                <li><i class="fa-solid fa-check"></i> No commercial tracking or data harvesting</li>
+                <li><i class="fa-solid fa-check"></i> Open-source enhancement contributions welcome</li>
+            </ul>
+        </div>
+        
+        <div class="version-info">
+            <p><strong>ICOS Search</strong> - Enhanced Privacy Search Engine</p>
+            <p>Version {{ version_number or '1.0.0' }} | Built with ❤️ for Privacy</p>
+            <p>© 2025 ICOS Search Project. Enhanced from Whoogle Search.</p>
+        </div>
+    </div>
+</body>
+</html>

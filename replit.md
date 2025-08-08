@@ -14,6 +14,11 @@ Privacy-focused search engine that provides Google search results without tracki
   - No security vulnerabilities detected during migration
 
 ## Recent Changes
+✓ **ADDED ABOUT SECTION** - August 8, 2025: Created comprehensive About page with acknowledgments
+  - Added About button to settings panel below AI sidebar toggle
+  - Created new /about endpoint with detailed project information
+  - Includes acknowledgments for Whoogle Search, open source libraries, and technology stack
+  - Opens in new tab as requested, with full responsive design and theme support
 ✓ **FIXED PEOPLE ALSO ASK SECTIONS** - August 8, 2025: Restored "People also ask" content in search results
   - Added specific protection for "People also ask" sections in collapse_sections()
   - Increased RESULT_CHILD_LIMIT from 7 to 15 to be less aggressive about collapsing

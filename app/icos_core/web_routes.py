@@ -409,6 +409,16 @@ def search():
 
 #@app.route(f'/{Endpoint.config}', methods=['GET', 'POST', 'PUT'])
 @session_required
+@auth_required  
+def about():
+    """About page showing acknowledgments and project information"""
+    return render_template('about.html',
+                           config=g.user_config,
+                           version_number=app.config.get('VERSION_NUMBER', '1.0.0'),
+                           cb_url=lambda x: url_for('static', filename=f'css/{x}'))
+
+
+@session_required
 @auth_required
 def config():
     config_disabled = (
@@ -729,6 +739,7 @@ def register_routes(app_instance):
     app_instance.route(f'/{Endpoint.healthz}', methods=['GET'])(healthz)
     app_instance.route('/', methods=['GET'])(index)
     app_instance.route(f'/{Endpoint.home}', methods=['GET'])(index)
+    app_instance.route(f'/{Endpoint.about}', methods=['GET'])(about)
     app_instance.route(f'/{Endpoint.opensearch}', methods=['GET'])(opensearch)
     app_instance.route(f'/{Endpoint.search_html}', methods=['GET'])(search_html)
     app_instance.route(f'/{Endpoint.autocomplete}', methods=['GET', 'POST'])(autocomplete)

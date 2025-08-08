@@ -182,6 +182,38 @@
                 background-color: rgba(232, 234, 237, 0.08) !important;
             }
         }
+        
+        /* About section styling */
+        .about-item .setting-control {
+            display: flex;
+            align-items: center;
+        }
+        
+        .about-link {
+            color: #1a73e8;
+            text-decoration: none;
+            padding: 8px;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+            font-size: 16px;
+        }
+        
+        .about-link:hover {
+            background-color: rgba(26, 115, 232, 0.1);
+            color: #1557b0;
+        }
+        
+        /* Dark theme about link styling */
+        body:has(link[href*="dark-theme.css"]) .about-link,
+        [data-theme="dark"] .about-link {
+            color: #8ab4f8 !important;
+        }
+        
+        body:has(link[href*="dark-theme.css"]) .about-link:hover,
+        [data-theme="dark"] .about-link:hover {
+            background-color: rgba(138, 180, 248, 0.1) !important;
+            color: #aecbfa !important;
+        }
     </style>
     <title>icos search</title>
 </head>
@@ -273,6 +305,21 @@
                                 <input type="checkbox" name="ai_sidebar" id="modal-config-ai-sidebar" {{ 'checked' if config.ai_sidebar else '' }}>
                                 <span class="toggle-slider"></span>
                             </label>
+                        </div>
+                    </div>
+
+                    <div class="setting-item about-item">
+                        <div class="setting-icon">
+                            <i class="fa-solid fa-info-circle"></i>
+                        </div>
+                        <div class="setting-info">
+                            <div class="setting-title">About</div>
+                            <div class="setting-description">View acknowledgments and project information</div>
+                        </div>
+                        <div class="setting-control">
+                            <a href="about" target="_blank" class="about-link">
+                                <i class="fa-solid fa-external-link-alt"></i>
+                            </a>
                         </div>
                     </div>
                     
