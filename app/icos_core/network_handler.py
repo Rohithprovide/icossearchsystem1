@@ -249,10 +249,10 @@ class Request:
         # Dynamically adjust results per page based on search type
         search_url_to_use = base_url or self.search_url
         
-        # Check search type and adjust results per page accordingly
-        if not base_url and query:
+        # Check search type and adjust results per page consistently for all searches
+        if query:
             if 'tbm=' not in query:
-                # This is an "All" tab search - use 15 results
+                # This is an "All" tab search - use 15 results consistently
                 search_url_to_use = search_url_to_use.replace(f'num={self.default_results_per_page}', 'num=15')
             elif 'tbm=vid' in query or 'tbm=nws' in query:
                 # Videos and News tabs - use 15 results
