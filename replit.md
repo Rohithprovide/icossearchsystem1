@@ -19,6 +19,7 @@ Privacy-focused search engine that provides Google search results without tracki
   - Created new /about endpoint with detailed project information
   - Includes acknowledgments for Whoogle Search, open source libraries, and technology stack
   - Added detailed comparison section highlighting ICOS vs Whoogle differences and improvements
+  - Included SX encryption system, Vortex security protocols, and military-grade security features
   - Opens in new tab as requested, with full responsive design and theme support
 ✓ **FIXED PEOPLE ALSO ASK SECTIONS** - August 8, 2025: Restored "People also ask" content in search results
   - Added specific protection for "People also ask" sections in collapse_sections()
