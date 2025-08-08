@@ -250,13 +250,17 @@ class Request:
         search_url_to_use = base_url or self.search_url
         
         # Check search type and adjust results per page consistently for all searches
-        if query:
+        if query and not base_url:
+            # Only modify search URLs when using our internal search URL (not external base_url)
             if 'tbm=' not in query:
-                # This is an "All" tab search - use 15 results consistently
-                search_url_to_use = search_url_to_use.replace(f'num={self.default_results_per_page}', 'num=15')
+                # This is an "All" tab search - always use 15 results consistently
+                # Use regex replacement to handle any num= value robustly
+                import re
+                search_url_to_use = re.sub(r'num=\d+', 'num=15', search_url_to_use)
             elif 'tbm=vid' in query or 'tbm=nws' in query:
                 # Videos and News tabs - use 15 results
-                search_url_to_use = search_url_to_use.replace(f'num={self.default_results_per_page}', 'num=15')
+                import re
+                search_url_to_use = re.sub(r'num=\d+', 'num=15', search_url_to_use)
             # For other tabs (images, maps, etc.) keep the original results per page
         
         response = requests.get(

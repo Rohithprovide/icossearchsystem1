@@ -14,6 +14,10 @@ Privacy-focused search engine that provides Google search results without tracki
   - No security vulnerabilities detected during migration
 
 ## Recent Changes
+✓ **FIXED SEARCH RESULTS INCONSISTENCY BUG** - August 8, 2025: Resolved issue where first search and subsequent searches returned different numbers of results
+  - Modified network_handler.py to use robust regex replacement for result limits
+  - All tab searches now consistently return exactly 15 results whether from homepage or search results page
+  - Fixed using regex pattern to replace num=X with num=15 for reliable result count control
 ✓ **FIXED SX SYSTEM PAGE RELOAD BUG** - August 8, 2025: Resolved critical issue where encrypted URL text appeared in search bar on page reload
   - Modified search route in web_routes.py to properly pass decrypted query to templates
   - Added decrypted_display_query variable to ensure search bar shows original search terms
