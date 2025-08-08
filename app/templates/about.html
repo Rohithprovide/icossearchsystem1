@@ -672,6 +672,154 @@
         </div>
         
         <div class="section">
+            <h2><i class="fa-solid fa-lock"></i> Military-Grade Cryptographic Security</h2>
+            <p style="font-size: 18px; margin-bottom: 25px;">Icos Search implements advanced cryptographic techniques that go far beyond standard HTTPS encryption. Our custom SecureURLShield (SX) system provides military-grade protection for every URL and search query.</p>
+            
+            <div class="security-highlight">
+                <h3><i class="fa-solid fa-shield-halved"></i> SecureURLShield (SX) Encryption System</h3>
+                <p>Every external URL is protected with our proprietary SX encryption - making it impossible for anyone to see what sites you're visiting.</p>
+            </div>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-content">
+                        <i class="fa-solid fa-key feature-icon"></i>
+                        <div class="feature-title">AES-256-CBC Encryption</div>
+                        <div class="feature-description">We use the same encryption standard trusted by governments and militaries worldwide - Advanced Encryption Standard with 256-bit keys in Cipher Block Chaining mode.</div>
+                        <div class="feature-details">
+                            <strong>Technical Implementation:</strong>
+                            • AES-256 (Advanced Encryption Standard, 256-bit key)
+                            • CBC Mode (Cipher Block Chaining for added security)
+                            • Each URL gets its own unique encryption key
+                            • Cryptographically secure random number generation
+                            <br><br>
+                            <strong>Why This Matters:</strong>
+                            • Same encryption used by banks and governments
+                            • Would take trillions of years to crack with current technology
+                            • Each encrypted URL is completely unique
+                            • No two identical URLs produce the same encrypted output
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-content">
+                        <i class="fa-solid fa-fingerprint feature-icon"></i>
+                        <div class="feature-title">PBKDF2 Key Derivation</div>
+                        <div class="feature-description">We generate unique encryption keys for every URL using PBKDF2 (Password-Based Key Derivation Function 2) with 100,000 iterations and SHA-256 hashing.</div>
+                        <div class="feature-details">
+                            <strong>Key Generation Process:</strong>
+                            • PBKDF2 with 100,000 iterations (industry best practice)
+                            • SHA-256 cryptographic hash function
+                            • Combines master key + URL hash + random salt
+                            • Produces unique 32-byte encryption key per URL
+                            <br><br>
+                            <strong>Security Benefits:</strong>
+                            • Prevents rainbow table attacks
+                            • Each URL has completely different encryption
+                            • Keys are never reused or predictable
+                            • Computationally expensive to brute force
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-content">
+                        <i class="fa-solid fa-random feature-icon"></i>
+                        <div class="feature-title">Cryptographic Salt & IV</div>
+                        <div class="feature-description">Every encrypted URL includes a unique 16-byte salt and 16-byte initialization vector (IV) generated using cryptographically secure random number generation.</div>
+                        <div class="feature-details">
+                            <strong>Randomization Components:</strong>
+                            • 16-byte random salt per URL (prevents pattern recognition)
+                            • 16-byte random IV per URL (ensures encryption uniqueness)
+                            • Generated using secrets.token_bytes() - cryptographically secure
+                            • Never reused across different URLs
+                            <br><br>
+                            <strong>Why Random Salt/IV Matters:</strong>
+                            • Same URL encrypted twice = completely different output
+                            • Prevents frequency analysis attacks
+                            • Makes pattern recognition impossible
+                            • Ensures forward secrecy
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-content">
+                        <i class="fa-solid fa-code feature-icon"></i>
+                        <div class="feature-title">Custom Base64 Encoding</div>
+                        <div class="feature-description">After encryption, URLs are encoded using our custom Base64 alphabet that completely obscures the encrypted data and makes it unrecognizable.</div>
+                        <div class="feature-details">
+                            <strong>Custom Alphabet System:</strong>
+                            • Standard: ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/
+                            • Icos Custom: ZYXWVUTSRQPONMLKJIHGFEDCBAzyxwvutsrqponmlkjihgfedcba9876543210-_
+                            • Makes encrypted URLs completely unrecognizable
+                            • Even if someone knows it's Base64, they can't decode it
+                            <br><br>
+                            <strong>Obfuscation Benefits:</strong>
+                            • Encrypted URLs look like random gibberish
+                            • No recognizable Base64 patterns
+                            • Additional layer of security through obscurity
+                            • Custom encoding unique to Icos Search
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-content">
+                        <i class="fa-solid fa-certificate feature-icon"></i>
+                        <div class="feature-title">SHA-256 Integrity Verification</div>
+                        <div class="feature-description">Every encrypted URL includes a SHA-256 hash for integrity verification, ensuring the URL hasn't been tampered with during transmission.</div>
+                        <div class="feature-details">
+                            <strong>Integrity Protection:</strong>
+                            • SHA-256 hash of original URL embedded in encryption
+                            • Verified during decryption process
+                            • Detects any tampering or corruption
+                            • Ensures URL authenticity
+                            <br><br>
+                            <strong>Anti-Tampering Benefits:</strong>
+                            • Prevents man-in-the-middle attacks
+                            • Detects data corruption instantly
+                            • Ensures you visit the intended website
+                            • Cryptographic proof of URL integrity
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-content">
+                        <i class="fa-solid fa-shield-virus feature-icon"></i>
+                        <div class="feature-title">SX Prefix System</div>
+                        <div class="feature-description">Our encrypted URLs use the "SX" prefix (SecureX) instead of standard URL formats, making them instantly recognizable as Icos-protected links.</div>
+                        <div class="feature-details">
+                            <strong>SX Identification System:</strong>
+                            • All encrypted URLs start with "SX" prefix
+                            • Replaces Google's "gAAA" system with our own
+                            • Instantly identifies Icos-encrypted content
+                            • Example: SXZyxwvut... (completely obfuscated URL)
+                            <br><br>
+                            <strong>System Benefits:</strong>
+                            • Clear identification of protected URLs
+                            • No confusion with standard web addresses
+                            • Proprietary to Icos Search system
+                            • Enables automatic detection and handling
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="quote-block">
+                <div class="quote-text">"Every URL you click is protected by the same encryption standards used by military and intelligence agencies worldwide."</div>
+                <div class="quote-author">— Icos Cryptographic Security</div>
+            </div>
+            
+            <div class="security-highlight">
+                <h3><i class="fa-solid fa-lock"></i> What This All Means for You</h3>
+                <p>When you use Icos Search, every external website link is encrypted with military-grade security. Even if someone intercepts your traffic, they cannot see what websites you're visiting. Your browsing patterns remain completely private and secure.</p>
+            </div>
+        </div>
+        
+        <div class="section">
             <h2><i class="fa-solid fa-vs"></i> Google Search vs Icos Search</h2>
             <p style="font-size: 16px; margin-bottom: 20px;">Compare how Google Search and Icos Search handle your privacy and data:</p>
             
