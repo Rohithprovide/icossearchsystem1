@@ -14,13 +14,15 @@ Privacy-focused search engine that provides Google search results without tracki
   - No security vulnerabilities detected during migration
 
 ## Recent Changes
-✓ **ADDED ABOUT SECTION** - August 8, 2025: Created comprehensive About page with acknowledgments
+✓ **CREATED COMPREHENSIVE ABOUT PAGE** - August 8, 2025: Built detailed, professional About page with extensive features
   - Added About button to settings panel below AI sidebar toggle
-  - Created new /about endpoint with detailed project information
-  - Includes acknowledgments for Whoogle Search, open source libraries, and technology stack
-  - Added detailed comparison section highlighting ICOS vs Whoogle differences and improvements
-  - Included SX encryption system, Vortex security protocols, and military-grade security features
-  - Opens in new tab as requested, with full responsive design and theme support
+  - Created new /about endpoint with comprehensive project information and styling
+  - Extensive feature explanations for SX encryption, Vortex protocols, AI integration, voice search
+  - Detailed comparison table between ICOS and Whoogle with specific advantages
+  - Military-grade security explanations with technical details and benefits
+  - Catchy privacy slogans and professional design with animations and responsive layout
+  - Comprehensive acknowledgments, technology stack showcase, and usage philosophy
+  - Opens in new tab with full responsive design and advanced CSS styling
 ✓ **FIXED PEOPLE ALSO ASK SECTIONS** - August 8, 2025: Restored "People also ask" content in search results
   - Added specific protection for "People also ask" sections in collapse_sections()
   - Increased RESULT_CHILD_LIMIT from 7 to 15 to be less aggressive about collapsing
