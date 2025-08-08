@@ -14,6 +14,10 @@ Privacy-focused search engine that provides Google search results without tracki
   - No security vulnerabilities detected during migration
 
 ## Recent Changes
+✓ **FIXED PEOPLE ALSO ASK SECTIONS** - August 8, 2025: Restored "People also ask" content in search results
+  - Added specific protection for "People also ask" sections in collapse_sections()
+  - Increased RESULT_CHILD_LIMIT from 7 to 15 to be less aggressive about collapsing
+  - These sections will now appear normally in search results
 ✓ **ENABLED IMAGES IN ALL TAB** - August 8, 2025: Modified content filtering to preserve images in search results
   - Disabled remove_images_section() function in content_filter.py
   - Images will now appear in All tab search results as requested

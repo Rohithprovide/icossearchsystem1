@@ -125,8 +125,8 @@ def clean_css(css: str, page_url: str) -> str:
 
 class IcosContentFilterEngine:
     # Limit used for determining if a result is a "regular" result or a list
-    # type result sections
-    RESULT_CHILD_LIMIT = 7
+    # type result sections - increased to preserve "People also ask" sections
+    RESULT_CHILD_LIMIT = 15
 
     def __init__(
             self,
@@ -550,6 +550,10 @@ class IcosContentFilterEngine:
                 result.decompose()
                 continue
             
+            # Preserve "People also ask" sections - don't collapse them
+            result_text = ' '.join(str(s) for s in result_children).lower()
+            if any(phrase in result_text for phrase in ['people also ask', 'related questions', 'people also search']):
+                continue
 
             
             if minimal_mode:
