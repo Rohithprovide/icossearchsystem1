@@ -14,6 +14,11 @@ Privacy-focused search engine that provides Google search results without tracki
   - No security vulnerabilities detected during migration
 
 ## Recent Changes
+✓ **FIXED SX SYSTEM PAGE RELOAD BUG** - August 8, 2025: Resolved critical issue where encrypted URL text appeared in search bar on page reload
+  - Modified search route in web_routes.py to properly pass decrypted query to templates
+  - Added decrypted_display_query variable to ensure search bar shows original search terms
+  - Fixed issue where reloading search results pages would send encrypted text to Google instead of actual search query
+  - Users can now reload pages without losing their search context or seeing gibberish in the search bar
 ✓ **CREATED COMPREHENSIVE ABOUT PAGE** - August 8, 2025: Built detailed, professional About page with extensive features
   - Added About button to settings panel below AI sidebar toggle
   - Created new /about endpoint with comprehensive project information and styling

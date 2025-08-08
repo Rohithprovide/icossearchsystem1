@@ -297,8 +297,9 @@ def search():
 
     search_util = Search(request, g.user_config, g.session_key)
     query = search_util.new_search_query()
-
-
+    
+    # Store the original decrypted query for display purposes
+    decrypted_display_query = query
 
     # Redirect to home if invalid/blank search
     if not query:
@@ -341,7 +342,7 @@ def search():
             translation=translation,
             farside='https://farside.link',
             config=g.user_config,
-            query=urlparse.unquote(query),
+            query=decrypted_display_query,
             params=g.user_config.to_params(keys=['vortex'])), 503
 
     response = bold_search_terms(response, query)
@@ -376,7 +377,7 @@ def search():
     return render_template(
         'display.html',
         has_update=app.config['HAS_UPDATE'],
-        query=urlparse.unquote(query),
+        query=decrypted_display_query,
         search_type=search_util.search_type,
         search_name=get_search_name(search_util.search_type),
         config=g.user_config,
@@ -384,13 +385,13 @@ def search():
         lingva_url=app.config['TRANSLATE_URL'],
         translation=translation,
         translate_to=translate_to,
-        translate_str=query.replace(
+        translate_str=decrypted_display_query.replace(
             'translate', ''
         ).replace(
             translation['translate'], ''
         ),
         is_translation=any(
-            _ in query.lower() for _ in [translation['translate'], 'translate']
+            _ in decrypted_display_query.lower() for _ in [translation['translate'], 'translate']
         ) and not search_util.search_type,  # Standard search queries only
         response=cleanresponse,
         version_number=app.config['VERSION_NUMBER'],
@@ -401,7 +402,7 @@ def search():
             config=g.user_config,
             translation=translation,
             logo=render_template('logo.html', dark=g.user_config.dark),
-            query=urlparse.unquote(query),
+            query=decrypted_display_query,
             search_type=search_util.search_type,
             mobile=g.user_request.mobile,
             tabs=tabs)).replace("  ", "")
