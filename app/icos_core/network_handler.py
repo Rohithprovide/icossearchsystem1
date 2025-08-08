@@ -141,11 +141,11 @@ class Request:
     """
 
     def __init__(self, normal_ua, root_path, config: Config):
-        # Default results per page - will be dynamically set based on search type
-        default_results_per_page = int(os.getenv('WHOOGLE_RESULTS_PER_PAGE', 100))
+        # Default results per page - 20 for all tabs except All tab (which gets 15)
+        default_results_per_page = 20
         self.default_results_per_page = default_results_per_page
-        # Initialize with default, will be updated in send method based on search type
-        self.search_url = 'https://www.google.com/search?gbv=1&num=' + str(default_results_per_page) + '&q='
+        # Initialize with 20 results, will be changed to 15 for All tab searches
+        self.search_url = 'https://www.google.com/search?gbv=1&num=20&q='
 
 
         self.language = config.lang_search if config.lang_search else ''
@@ -251,9 +251,9 @@ class Request:
         
         # Only modify result count for All tab searches (when there's no tbm= parameter)
         if query and not base_url and 'tbm=' not in query:
-            # This is an "All" tab search - use exactly 15 results
-            search_url_to_use = search_url_to_use.replace(f'num={self.default_results_per_page}', 'num=15')
-        # All other tabs (images, videos, news, etc.) keep their original result counts
+            # This is an "All" tab search - use exactly 15 results (change from 20 to 15)
+            search_url_to_use = search_url_to_use.replace('num=20', 'num=15')
+        # All other tabs (images, videos, news, etc.) keep 20 results
         
         response = requests.get(
             search_url_to_use + query,
