@@ -144,8 +144,8 @@ class Request:
         # Default results per page - will be dynamically set based on search type
         default_results_per_page = int(os.getenv('WHOOGLE_RESULTS_PER_PAGE', 100))
         self.default_results_per_page = default_results_per_page
-        # Initialize with default, will be updated in send method based on search type
-        self.search_url = 'https://www.google.com/search?gbv=1&num=' + str(default_results_per_page) + '&q='
+        # Always use 15 results for All tab searches - hardcoded for consistency
+        self.search_url = 'https://www.google.com/search?gbv=1&num=15&q='
 
 
         self.language = config.lang_search if config.lang_search else ''
@@ -246,22 +246,8 @@ class Request:
 
 
 
-        # Dynamically adjust results per page based on search type
+        # Use the hardcoded search URL with num=15 for all searches
         search_url_to_use = base_url or self.search_url
-        
-        # Check search type and adjust results per page consistently for all searches
-        if query and not base_url:
-            # Only modify search URLs when using our internal search URL (not external base_url)
-            if 'tbm=' not in query:
-                # This is an "All" tab search - always use 15 results consistently
-                # Use regex replacement to handle any num= value robustly
-                import re
-                search_url_to_use = re.sub(r'num=\d+', 'num=15', search_url_to_use)
-            elif 'tbm=vid' in query or 'tbm=nws' in query:
-                # Videos and News tabs - use 15 results
-                import re
-                search_url_to_use = re.sub(r'num=\d+', 'num=15', search_url_to_use)
-            # For other tabs (images, maps, etc.) keep the original results per page
         
         response = requests.get(
             search_url_to_use + query,
