@@ -14,6 +14,10 @@ Privacy-focused search engine that provides Google search results without tracki
   - No security vulnerabilities detected during migration
 
 ## Recent Changes
+✓ **ENABLED IMAGES IN ALL TAB** - August 8, 2025: Modified content filtering to preserve images in search results
+  - Disabled remove_images_section() function in content_filter.py
+  - Images will now appear in All tab search results as requested
+  - Function preserved as commented code for future reference
 ✓ **FIXED SETTINGS PANEL BUG** - July 29, 2025: Resolved critical issue where toggle buttons didn't persist after form submission
   - Added proper checkbox value conversion in web_routes.py (HTML 'on' to boolean True)
   - Fixed Config class preference override mapping for legacy form field names (safe → safe_search_enabled, etc.)
