@@ -18,7 +18,7 @@ Privacy-focused search engine that provides Google search results without tracki
   - Updated main logo template from "icos" to "Icos" for professional appearance
   - Standardized all page titles to use "Icos search" instead of "icos search"
   - Enhanced brand consistency across all templates and user-facing text
-  - Changed logo font from Dancing Script to Ephesis for flowing script appearance
+  - Changed logo font from Dancing Script to Aquafina Script for refined calligraphy appearance
 ✓ **UPDATED ABOUT PAGE ACCURACY** - August 9, 2025: Corrected technical claims for accuracy
   - Removed overstated "military-grade" security claims, replaced with "industry-standard" and "robust"
   - Corrected voice search description to clarify internet connection requirement
