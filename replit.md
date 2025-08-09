@@ -14,6 +14,17 @@ Privacy-focused search engine that provides Google search results without tracki
   - No security vulnerabilities detected during migration
 
 ## Recent Changes
+✓ **STANDARDIZED BRANDING TO "ICOS"** - August 9, 2025: Updated all logo and title references from lowercase "icos" to proper "Icos"
+  - Updated main logo template from "icos" to "Icos" for professional appearance
+  - Standardized all page titles to use "Icos search" instead of "icos search"
+  - Enhanced brand consistency across all templates and user-facing text
+✓ **UPDATED ABOUT PAGE ACCURACY** - August 9, 2025: Corrected technical claims for accuracy
+  - Removed overstated "military-grade" security claims, replaced with "industry-standard" and "robust"
+  - Corrected voice search description to clarify internet connection requirement
+  - Removed "multilingual support" claim as application is currently English-only
+  - Enhanced Vortex System descriptions with proper technical details
+  - Removed "user education" from acknowledgements section
+  - Removed copyright line from footer for cleaner appearance
 ✓ **FIXED SEARCH RESULTS INCONSISTENCY BUG** - August 8, 2025: Resolved issue where first search and subsequent searches returned different numbers of results
   - Modified network_handler.py to use robust regex replacement for result limits
   - All tab searches now consistently return exactly 15 results whether from homepage or search results page
